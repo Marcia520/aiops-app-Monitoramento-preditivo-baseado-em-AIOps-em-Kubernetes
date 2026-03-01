@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: aiops-servicemonitor
+  namespace: aiops-banco
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: aiops   # precisa bater com o label do Service e do Deployment
+  namespaceSelector:
+    matchNames:
+      - aiops-banco
+  endpoints:
+    - port: http   # precisa ser o mesmo nome da porta definida no Service
+      path: /metrics
+      interval: 5s

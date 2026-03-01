@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aiops-service
+  namespace: aiops-banco
+  labels:
+    app: aiops
+spec:
+  selector:
+    app: aiops
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+
