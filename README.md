@@ -63,6 +63,7 @@ kubectl apply -f k8s/aiops-hpa.yaml
 kubectl apply -f k8s/aiops-servicemonitor.yaml
 kubectl apply -f k8s/metrics-server-deployment.yaml
 
+### 1. Aplicar os manifestos
 ### 2. Verificar pods
 ```bash
 kubectl get pods -n aiops-banco
