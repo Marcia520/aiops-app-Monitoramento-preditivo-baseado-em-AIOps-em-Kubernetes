@@ -42,6 +42,9 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 - **Docker Desktop em execução:**  
   ![docker](docker.png)
 
+  ![pods](pods.PNG)
+
+
 - **Kubernetes ativado ativado no Docker Desktop e nó em execução:**  
   ![kubernetes](kubernetes.png)
 
