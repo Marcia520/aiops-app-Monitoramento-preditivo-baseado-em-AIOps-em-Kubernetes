@@ -19,7 +19,7 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 - **Python 3.10** → linguagem principal da aplicação  
 - **Flask** → framework para API RESTful  
 - **Scikit-learn** → biblioteca para aprendizado de máquina (Isolation Forest)  
-  
+
 ### 📌 Infraestrutura e Orquestração
 - **Docker** → empacotamento da aplicação em contêineres  
 - **Kubernetes** → orquestração e deploy  
@@ -58,82 +58,116 @@ A proposta busca contribuir para a evolução da confiabilidade operacional e pa
 
 ---
 
-# 🚀 Etapa 1 – Empacotamento e Orquestração da Aplicação
-
-Este documento descreve o roteiro de validação da aplicação **aiops-app** empacotada em contêineres Docker e orquestrada via Kubernetes, incluindo o uso de **Horizontal Pod Autoscaler (HPA)** e probes de saúde.
+# 🚀 Roteiros de Validação
 
 ---
 
-## 📂 Estrutura de arquivos
-
-Na pasta `k8s/` estão os manifestos Kubernetes:
-
-- `aiops-app-deployment.yaml` → Deployment da aplicação  
-- `aiops-service.yaml` → Service para expor a aplicação  
-- `aiops-hpa.yaml` → Horizontal Pod Autoscaler  
-- `aiops-servicemonitor.yaml` → ServiceMonitor para Prometheus  
-- `metrics-server-deployment.yaml` → Metrics Server  
-
----
-
-## 📌 Roteiro de Validação
-
-### 1. Aplicar os manifestos
+## Etapa 1 – Empacotamento e orquestração da aplicação
 ```bash
 kubectl apply -f k8s/aiops-app-deployment.yaml
 kubectl apply -f k8s/aiops-service.yaml
 kubectl apply -f k8s/aiops-hpa.yaml
 kubectl apply -f k8s/aiops-servicemonitor.yaml
 kubectl apply -f k8s/metrics-server-deployment.yaml
----
-### 👉 Garante que todos os manifestos estão aplicados no cluster Kubernetes rodando no Docker Desktop.
+```
+👉 Garante que todos os manifestos estão aplicados no cluster Kubernetes rodando no **Docker Desktop**.
 
 ---
 
-### 2. Verificar pods
-### 1. Aplicar os manifestos
-### 2. Verificar pods
+## Etapa 2 – Verificar pods
 ```bash
 kubectl get pods -n aiops-banco
+```
 
-### Saída esperada:
-```bash
-NAME                                                     READY   STATUS             RESTARTS         AGE
-aiops-app-575fd79f44-f7nwd                               1/1     Running            3 (30m ago)      33m
-aiops-app-575fd79f44-rvf76                               1/1     Running            3 (31m ago)      33m
-alertmanager-prometheus-kube-prometheus-alertmanager-0   2/2     Running            6 (115m ago)     2d20h
-prometheus-grafana-644d5c5bdf-klgh4                      3/3     Running            3 (115m ago)     2d
-prometheus-kube-prometheus-operator-8465b57d95-zbznf     1/1     Running            5 (113m ago)     2d20h
-prometheus-kube-state-metrics-cc8c6b4df-grqc9            1/1     Running            4 (113m ago)     2d20h
-prometheus-prometheus-kube-prometheus-prometheus-0       2/2     Running            6 (115m ago)     2d20h
-prometheus-prometheus-node-exporter-lt6kc                0/1     CrashLoopBackOff   99 (4m56s ago)   2d20h
+**Saída esperada:**
+```
+NAME                          READY   STATUS    RESTARTS   AGE
+aiops-app-575fd79f44-f7nwd    1/1     Running   3          33m
+aiops-app-575fd79f44-rvf76    1/1     Running   3          33m
+...
+```
 
-### 3. Validar métricas
+---
+
+## Etapa 3 – Validar métricas
 ```bash
 kubectl top pods -n aiops-banco
+```
 
-### Saída esperada:
-```bash
-NAME                                                     CPU(cores)   MEMORY(bytes)
-aiops-app-575fd79f44-f7nwd                               37m          76Mi
-aiops-app-575fd79f44-rvf76                               34m          76Mi
-alertmanager-prometheus-kube-prometheus-alertmanager-0   2m           52Mi
-prometheus-grafana-644d5c5bdf-klgh4                      13m          416Mi
-prometheus-kube-prometheus-operator-8465b57d95-zbznf     12m          42Mi
-prometheus-kube-state-metrics-cc8c6b4df-grqc9            2m           49Mi
-prometheus-prometheus-kube-prometheus-prometheus-0       19m          320Mi
+**Saída esperada:**
+```
+NAME                          CPU(cores)   MEMORY(bytes)
+aiops-app-575fd79f44-f7nwd    37m          76Mi
+aiops-app-575fd79f44-rvf76    34m          76Mi
+...
+```
 
-### 4. Conferir status do HPA
+👉 Confirma que o **metrics-server** está funcionando corretamente.
+
+---
+
+## Etapa 4 – Conferir status do HPA
 ```bash
 kubectl get hpa -n aiops-banco --watch
+```
 
-### Saída esperada:
-```bash
+**Saída esperada:**
+```
 NAME        REFERENCE              TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
 aiops-hpa   Deployment/aiops-app   cpu: 34%/70%   2         5         2          2d20h
+```
 
-### 👉 Inicialmente pode aparecer <unknown>. Após alguns ciclos, deve mostrar valores reais de CPU.
+👉 Inicialmente pode aparecer `<unknown>`. Após alguns ciclos, deve mostrar valores reais de CPU.
 
-### 5. Gerar carga para forçar escalada
+---
+
+## Etapa 5 – Gerar carga para forçar escalada
+Crie um pod BusyBox (se não existir):
 ```bash
-kubectl exec -it <busybox-pod> -n aiops-banco -- sh
+kubectl run busybox --image=busybox:1.28 --restart=Never -n aiops-banco -- sleep 3600
+```
+
+Entre no pod:
+```bash
+kubectl exec -it busybox -n aiops-banco -- sh
+```
+
+Rode o loop de carga:
+```sh
+while true; do wget -q -O- http://aiops-service:8000/; done
+```
+
+👉 Isso aumenta o uso de CPU e força o HPA a escalar.
+
+---
+
+## Etapa 6 – Validar escalada automática
+```bash
+kubectl get pods -n aiops-banco
+```
+
+**Saída esperada (após carga):**
+```
+NAME                          READY   STATUS    RESTARTS   AGE
+aiops-app-575fd79f44-f7nwd    1/1     Running   0          1m
+aiops-app-575fd79f44-rvf76    1/1     Running   0          2d
+aiops-app-575fd79f44-klmno    1/1     Running   0          30s
+```
+
+👉 Novos pods são criados automaticamente quando a CPU ultrapassa o limite configurado no HPA.
+
+---
+
+# ✅ Conclusão
+
+Com esses 6 roteiros de validação, você garante que:
+- Os manifestos foram aplicados corretamente no cluster Kubernetes (Docker Desktop).  
+- Os pods estão rodando e expondo métricas.  
+- O metrics-server está ativo.  
+- O HPA monitora e escala automaticamente.  
+- A carga simulada força a escalada.  
+- A observabilidade pode ser validada com Prometheus e Grafana.  
+```
+
+---
+
