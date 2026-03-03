@@ -18,10 +18,10 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 
 ## 📑 Etapas
 
-- [Etapa 1 – Instalação e Configuração](./etapa-1-instalacao-configuracao/README.md)
-- [Etapa 2 – Observabilidade com Prometheus e Grafana](./etapa-2-observabilidade/README.md)
-- [Etapa 3 – Detecção de Anomalias e Automação de Respostas](./etapa-3-anomalias-automacao/README.md)
-- [Etapa 4 – Resultados e Conclusões](./etapa-4-resultados-conclusoes/README.md)
+- [Etapa 1 – Instalação e Configuração](./Etapa-1-Empacotamento-e-Orquestração/README.md)
+- [Etapa 2 – Observabilidade com Prometheus e Grafana](./Etapa-2-Observabilidade/README.md)
+- [Etapa 3 – Detecção de Anomalias e Automação de Respostas](./Etapa-3-IA-para-Detecção-de-Anomalias/README.md)
+- [Etapa 4 – Resultados e Conclusões](./Etapa-3-IA-para-Detecção-de-Anomalias/README.md)
 
 ---
 
