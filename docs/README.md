@@ -40,19 +40,16 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 ## 🔧 Evidências das Instalações
 
 - **Docker Desktop em execução:**  
-  ![docker](docker.png)
+  ![docker](docker.PNG)
 
-  ![pods](pods.PNG)
-
-
-- **Kubernetes ativado ativado no Docker Desktop e nó em execução:**  
+- **Kubernetes ativado no Docker Desktop e nó em execução:**  
   ![kubernetes](kubernetes.png)
 
   **Cluster ativo (nó em execução):**  
   ![cluster_ativo](cluster_ativo.png)
 
   - **Namespace criado (aiops-banco):**  
-  ![namespace](/namespace.png)
+  ![namespace](namespace.png)
 
 - **Metrics-server funcionando (CPU/Memória):**  
   ![metrics_server](metrics_server.png)
