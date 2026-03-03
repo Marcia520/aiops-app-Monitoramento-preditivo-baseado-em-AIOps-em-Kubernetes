@@ -58,9 +58,46 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 ---
 
 ## 📂 Estrutura do projeto
-- `app/` → Código da aplicação e Dockerfile  
-- `docs/` → Documentação, tabelas e resultados do TCC  
-- `k8s/` → Manifests para deploy em Kubernetes  
+
+    app/ → código-fonte da aplicação
+
+        app.py
+
+        Dockerfile
+
+        requirements.txt
+
+        README.md
+
+    Etapa-1-Empacotamento-Orquestracao/
+
+        k8s/ → manifests iniciais (deployment, service, HPA, metrics-server)
+
+        docs/ → prints da instalação e configuração (Docker, Kubernetes, Git, GitHub)
+
+        README.md → explicação da etapa
+
+    Etapa-2-Observabilidade/
+
+        k8s/ → manifests de Prometheus, Grafana, ServiceMonitor
+
+        docs/ → prints de métricas, dashboards, HPA
+
+        README.md → explicação da etapa
+
+    Etapa-3-Anomalias-Automacao/
+
+        k8s/ → YAMLs de alertas e detecção de anomalias (alertmanager-config.yaml, anomaly-detector.yaml)
+
+        docs/ → prints dos dashboards de anomalias
+
+        README.md → explicação da etapa
+
+    Etapa-4-Resultados-Conclusoes/
+
+        docs/ → prints finais, gráficos comparativos, conclusões
+
+        README.md → resumo dos resultados e análise de resiliência  
 
 ---
 
