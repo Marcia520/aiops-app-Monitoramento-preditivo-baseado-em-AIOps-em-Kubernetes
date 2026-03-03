@@ -48,7 +48,3 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 
 ---
 
-
-
-
-👉 Quer que eu prepare também um **README.md da Etapa 2 (Observabilidade com Prometheus e Grafana)** para você colocar na pasta `docs/` logo em seguida?
