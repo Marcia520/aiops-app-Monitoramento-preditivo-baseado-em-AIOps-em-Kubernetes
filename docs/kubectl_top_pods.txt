@@ -1,0 +1,9 @@
+NAME                                                     CPU(cores)   MEMORY(bytes)   
+aiops-app-575fd79f44-f7nwd                               57m          76Mi            
+aiops-app-575fd79f44-rvf76                               54m          76Mi            
+alertmanager-prometheus-kube-prometheus-alertmanager-0   2m           52Mi            
+busybox                                                  0m           0Mi             
+prometheus-grafana-644d5c5bdf-klgh4                      15m          418Mi           
+prometheus-kube-prometheus-operator-8465b57d95-zbznf     8m           43Mi            
+prometheus-kube-state-metrics-cc8c6b4df-grqc9            2m           48Mi            
+prometheus-prometheus-kube-prometheus-prometheus-0       39m          359Mi           

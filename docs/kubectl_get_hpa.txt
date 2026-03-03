@@ -1,0 +1,5 @@
+NAME        REFERENCE              TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
+aiops-hpa   Deployment/aiops-app   cpu: 34%/70%   2         5         2          2d21h
+aiops-hpa   Deployment/aiops-app   cpu: 53%/70%   2         5         2          2d21h
+aiops-hpa   Deployment/aiops-app   cpu: 38%/70%   2         5         2          2d21h
+aiops-hpa   Deployment/aiops-app   cpu: 32%/70%   2         5         2          2d21h

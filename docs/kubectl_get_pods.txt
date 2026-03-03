@@ -1,0 +1,10 @@
+NAME                                                     READY   STATUS             RESTARTS          AGE
+aiops-app-575fd79f44-f7nwd                               1/1     Running            3 (96m ago)       99m
+aiops-app-575fd79f44-rvf76                               1/1     Running            3 (97m ago)       99m
+alertmanager-prometheus-kube-prometheus-alertmanager-0   2/2     Running            6 (3h1m ago)      2d21h
+busybox                                                  1/1     Running            0                 31m
+prometheus-grafana-644d5c5bdf-klgh4                      3/3     Running            3 (3h1m ago)      2d1h
+prometheus-kube-prometheus-operator-8465b57d95-zbznf     1/1     Running            5 (179m ago)      2d21h
+prometheus-kube-state-metrics-cc8c6b4df-grqc9            1/1     Running            4 (179m ago)      2d21h
+prometheus-prometheus-kube-prometheus-prometheus-0       2/2     Running            6 (3h1m ago)      2d21h
+prometheus-prometheus-node-exporter-lt6kc                0/1     CrashLoopBackOff   112 (4m28s ago)   2d21h
