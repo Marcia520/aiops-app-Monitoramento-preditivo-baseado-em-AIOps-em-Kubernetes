@@ -43,22 +43,22 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
   ![docker](docker.PNG)
 
 - **Kubernetes ativado no Docker Desktop e nó em execução:**  
-  ![kubernetes](kubernetes.png)
+  ![kubernetes](kubernetes.PNG)
 
   **Cluster ativo (nó em execução):**  
-  ![cluster_ativo](cluster_ativo.png)
+  ![cluster_ativo](cluster_ativo.PNGg)
 
   - **Namespace criado (aiops-banco):**  
-  ![namespace](namespace.png)
+  ![namespace](namespace.PNG)
 
 - **Metrics-server funcionando (CPU/Memória):**  
-  ![metrics_server](metrics_server.png)
+  ![metrics_server](metrics_server.PNG)
 
 - **Git instalado e configurado localmente:**  
-  ![git](git.png)
+  ![git](git.PNG)
 
   **Repositório conectado ao GitHub:**  
-  ![github](github.png)
+  ![github](github.PNG)
 
   
 ## 1. Etapa 1 – Empacotamento e Orquestração
