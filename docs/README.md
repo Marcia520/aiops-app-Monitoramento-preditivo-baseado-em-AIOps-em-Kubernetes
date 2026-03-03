@@ -109,9 +109,12 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 
 ---
 
+
 # 📊 Etapa 2 – Observabilidade com Prometheus e Grafana
 
 ## ⚙️ Instalações e Configurações
+
+Durante esta etapa, foram realizadas as seguintes instalações e configurações:
 
 - **Prometheus Operator (via Helm)**
   ```bash
@@ -119,12 +122,22 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
   helm repo update
   helm install prometheus prometheus-community/kube-prometheus-stack -n aiops-banco
   ```
+  Instala Prometheus, Alertmanager e Grafana no namespace `aiops-banco`.
 
 - **Metrics-server**
+  Arquivo: `metrics-server-deployment.yaml`  
+  Responsável por fornecer métricas de CPU e memória ao Kubernetes, permitindo o funcionamento do HPA.
   ```bash
-  kubectl apply -f metrics-server-deployment.yaml
+  kubectl apply -f metrics-server-deployment.yaml -n aiops-banco
   ```
-  Necessário para fornecer métricas de CPU/memória ao Kubernetes e habilitar o HPA.
+  Verificação:
+  ```bash
+  kubectl get pods -n kube-system | grep metrics-server
+  ```
+  Saída esperada:
+  ```
+  metrics-server-7f8d9f9d8d-abcde   1/1   Running   0   2m
+  ```
 
 - **Deployment da aplicação**
   Arquivo: `aiops-app-deployment.yaml`  
@@ -149,7 +162,7 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 ### 1. Exposição de métricas pela aplicação
 - **Port-forward:**
   ```bash
-  kubectl port-forward svc/aiops-app 8000:8000 -n aiops-banco
+  kubectl port-forward svc/aiops-service 8000:8000 -n aiops-banco
   ```
 - **Acesso às métricas:**
   ```bash
@@ -161,7 +174,7 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
   # TYPE aiops_anomaly_score gauge
   aiops_anomaly_score 0.15
   ```
-- **Evidência:** `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+- **Evidência:** `docs/metrics.png`
 
 ---
 
@@ -174,7 +187,7 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
   ```
   aiops_anomaly_score{instance="aiops-app:8000",job="aiops-monitor"} 0.15
   ```
-- **Evidência:** `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+- **Evidência:** `docs/prometheus.png`
 
 ---
 
@@ -191,7 +204,7 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
   - Gráfico de CPU por pod.  
   - Gráfico do score de anomalia.  
   - Gráfico mostrando réplicas do HPA ao longo do tempo.
-- **Evidência:** `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+- **Evidência:** `docs/grafana.png`
 
 ---
 
@@ -205,14 +218,41 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
   NAME         REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
   aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10m
   ```
-- **Evidência:** `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+- **Evidência:** `docs/hpa.png`
 
 ---
 
-## ✅ Conclusão da Etapa 2
-- A aplicação expõe métricas customizadas (`aiops_anomaly_score`).  
-- O Prometheus coleta e armazena métricas em tempo real.  
-- O Grafana exibe dashboards configurados com métricas da aplicação e do cluster.  
-- O HPA reage dinamicamente a cargas, escalando réplicas conforme necessário.  
+## 🌐 Acesso ao Prometheus e Grafana
+
+### 🔎 Prometheus
+- **Service:** `prometheus-kube-prometheus-prometheus`
+- **Porta:** `9090`
+- **Comando:**
+  ```bash
+  kubectl port-forward svc/prometheus-kube-prometheus-prometheus 9090:9090 -n aiops-banco
+  ```
+- **Link local:**  
+  👉 http://localhost:9090
+
+---
+
+### 📊 Grafana
+- **Service:** `prometheus-grafana`
+- **Porta:** `80`
+- **Comando:**
+  ```bash
+  kubectl port-forward svc/prometheus-grafana 3000:80 -n aiops-banco
+  ```
+- **Link local:**  
+  👉 http://localhost:3000
+
+---
+
+### 🔑 Credenciais do Grafana
+- Usuário: `admin`  
+- Senha: gerada automaticamente pelo Helm Chart. Para descobrir:
+  ```bash
+  kubectl get secret prometheus-grafana -n aiops-banco -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+  ```
 
 ---
