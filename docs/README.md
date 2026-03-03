@@ -13,8 +13,7 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 - **Descrição:**  
   Lista todos os pods ativos no namespace `aiops-banco`, confirmando que a aplicação e os componentes de observabilidade estão em execução.
 - **Evidência:**  
-  `[<img width="874" height="196" alt="pods" src="https://github.com/user-attachments/assets/0d9d45f1-8c00-4d34-99d2-b0e4c803c21a" />
-]`
+ ![pods](docs/pods.PNG)
 
 ---
 
@@ -26,8 +25,7 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 - **Descrição:**  
   Exibe consumo de CPU e memória dos pods, validando que o **metrics-server** está funcionando corretamente.
 - **Evidência:**  
-  `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`  
-- 📂 Saída completa: `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+  ![metrics](docs/metricas.PNG)
 
 ---
 
@@ -39,16 +37,14 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 - **Descrição:**  
   Mostra o comportamento do **Horizontal Pod Autoscaler (HPA)**, incluindo limites de CPU, número mínimo/máximo de pods e réplicas atuais.
 - **Evidência:**  
-  `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`  
-- 📂 Saída completa: `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+ ![hpa](docs/hpa.PNG)
 
 ---
 
 ## 4. Escalada automática
 - **Descrição:**  
   Durante a execução de carga simulada (via BusyBox), o HPA detectou aumento de CPU e escalou a aplicação, criando novos pods automaticamente.
-- **Evidência:**  
-  `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+![escalada](docs/escala automatica.PNG)
 
 ---
 
