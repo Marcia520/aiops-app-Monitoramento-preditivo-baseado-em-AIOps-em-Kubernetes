@@ -49,10 +49,10 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
   ![cluster_ativo](cluster_ativo.PNGg)
 
   - **Namespace criado (aiops-banco):**  
-  ![namespace](namespace.PNG)
+  ![namespace](namespace_ativo.PNG)
 
 - **Metrics-server funcionando (CPU/Memória):**  
-  ![metrics_server](metrics_server.PNG)
+  ![metrics Server](metrics_server.PNG)
 
 - **Git instalado e configurado localmente:**  
   ![git](git.PNG)
