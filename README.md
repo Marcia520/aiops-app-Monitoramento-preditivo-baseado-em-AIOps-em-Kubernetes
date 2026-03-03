@@ -81,12 +81,16 @@ kubectl get pods -n aiops-banco
 
 **Saída esperada:**
 ```
-NAME                          READY   STATUS    RESTARTS   AGE
-aiops-app-575fd79f44-f7nwd    1/1     Running   3          33m
-aiops-app-575fd79f44-rvf76    1/1     Running   3          33m
-...
+NAME                                                     READY   STATUS             RESTARTS        AGE
+aiops-app-575fd79f44-f7nwd                               1/1     Running            3 (62m ago)     65m
+aiops-app-575fd79f44-rvf76                               1/1     Running            3 (63m ago)     66m
+alertmanager-prometheus-kube-prometheus-alertmanager-0   2/2     Running            6 (147m ago)    2d20h
+prometheus-grafana-644d5c5bdf-klgh4                      3/3     Running            3 (147m ago)    2d
+prometheus-kube-prometheus-operator-8465b57d95-zbznf     1/1     Running            5 (145m ago)    2d20h
+prometheus-kube-state-metrics-cc8c6b4df-grqc9            1/1     Running            4 (145m ago)    2d20h
+prometheus-prometheus-kube-prometheus-prometheus-0       2/2     Running            6 (147m ago)    2d20h
+prometheus-prometheus-node-exporter-lt6kc                0/1     CrashLoopBackOff   106 (89s ago)   2d20h
 ```
-
 ---
 
 ## Etapa 3 – Validar métricas
@@ -96,10 +100,14 @@ kubectl top pods -n aiops-banco
 
 **Saída esperada:**
 ```
-NAME                          CPU(cores)   MEMORY(bytes)
-aiops-app-575fd79f44-f7nwd    37m          76Mi
-aiops-app-575fd79f44-rvf76    34m          76Mi
-...
+NAME                                                     CPU(cores)   MEMORY(bytes)
+aiops-app-575fd79f44-f7nwd                               35m          76Mi
+aiops-app-575fd79f44-rvf76                               37m          76Mi
+alertmanager-prometheus-kube-prometheus-alertmanager-0   1m           51Mi
+prometheus-grafana-644d5c5bdf-klgh4                      11m          416Mi
+prometheus-kube-prometheus-operator-8465b57d95-zbznf     7m           41Mi
+prometheus-kube-state-metrics-cc8c6b4df-grqc9            3m           49Mi
+prometheus-prometheus-kube-prometheus-prometheus-0       15m          328Mi
 ```
 
 👉 Confirma que o **metrics-server** está funcionando corretamente.
@@ -149,25 +157,19 @@ kubectl get pods -n aiops-banco
 **Saída esperada (após carga):**
 ```
 NAME                          READY   STATUS    RESTARTS   AGE
-aiops-app-575fd79f44-f7nwd    1/1     Running   0          1m
-aiops-app-575fd79f44-rvf76    1/1     Running   0          2d
-aiops-app-575fd79f44-klmno    1/1     Running   0          30s
+aiops-app-575fd79f44-f7nwd                               1/1     Running            3 (67m ago)     69m
+aiops-app-575fd79f44-rvf76                               1/1     Running            3 (68m ago)     70m
+alertmanager-prometheus-kube-prometheus-alertmanager-0   2/2     Running            6 (152m ago)    2d20h
+busybox                                                  1/1     Running            0               2m2s
+prometheus-grafana-644d5c5bdf-klgh4                      3/3     Running            3 (152m ago)    2d
+prometheus-kube-prometheus-operator-8465b57d95-zbznf     1/1     Running            5 (149m ago)    2d20h
+prometheus-kube-state-metrics-cc8c6b4df-grqc9            1/1     Running            4 (149m ago)    2d20h
+prometheus-prometheus-kube-prometheus-prometheus-0       2/2     Running            6 (152m ago)    2d20h
+prometheus-prometheus-node-exporter-lt6kc                0/1     CrashLoopBackOff   107 (61s ago)   2d20h
 ```
 
 👉 Novos pods são criados automaticamente quando a CPU ultrapassa o limite configurado no HPA.
 
 ---
 
-# ✅ Conclusão
-
-Com esses 6 roteiros de validação, você garante que:
-- Os manifestos foram aplicados corretamente no cluster Kubernetes (Docker Desktop).  
-- Os pods estão rodando e expondo métricas.  
-- O metrics-server está ativo.  
-- O HPA monitora e escala automaticamente.  
-- A carga simulada força a escalada.  
-- A observabilidade pode ser validada com Prometheus e Grafana.  
-```
-
----
 
