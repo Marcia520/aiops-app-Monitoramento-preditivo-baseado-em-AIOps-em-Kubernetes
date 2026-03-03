@@ -13,7 +13,7 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 - **Descrição:**  
   Lista todos os pods ativos no namespace `aiops-banco`, confirmando que a aplicação e os componentes de observabilidade estão em execução.
 - **Evidência:**  
- ![pods](docs/pods.PNG)
+ ![pods](pods.PNG)
 
 ---
 
@@ -25,7 +25,7 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 - **Descrição:**  
   Exibe consumo de CPU e memória dos pods, validando que o **metrics-server** está funcionando corretamente.
 - **Evidência:**  
-  ![metrics](docs/metricas.PNG)
+  ![metrics](metricas.PNG)
 
 ---
 
@@ -37,14 +37,14 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 - **Descrição:**  
   Mostra o comportamento do **Horizontal Pod Autoscaler (HPA)**, incluindo limites de CPU, número mínimo/máximo de pods e réplicas atuais.
 - **Evidência:**  
- ![hpa](docs/hpa.PNG)
+ ![hpa](hpa.PNG)
 
 ---
 
 ## 4. Escalada automática
 - **Descrição:**  
   Durante a execução de carga simulada (via BusyBox), o HPA detectou aumento de CPU e escalou a aplicação, criando novos pods automaticamente.
-![escala automatica](docs/escala automatica.PNG)
+![escala_automatica](escala automatica.PNG)
 
 ---
 
