@@ -1,5 +1,60 @@
 # 📂 Evidências da Implementação
 
+## 🔧 Preparação do Ambiente
+
+Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenvolvimento e orquestração. As principais instalações e configurações realizadas foram:
+
+- **Docker Desktop**  
+  - Instalado para fornecer o ambiente de containers.  
+  - Configurado para rodar localmente com suporte a Kubernetes.  
+
+- **Kubernetes (K8s)**  
+  - Ativado dentro do Docker Desktop.  
+  - Criado namespace `aiops-banco` para organizar os recursos da aplicação.  
+  - Instalado o **metrics-server** para coleta de métricas de CPU e memória.  
+
+- **Git e GitHub**  
+  - Repositório criado no GitHub para versionamento do projeto.  
+  - Configuração do Git local para sincronizar com o repositório remoto.  
+  - Estrutura organizada em pastas:  
+    - `app/` → código-fonte da aplicação.  
+    - `k8s/` → manifests Kubernetes.  
+    - `docs/` → evidências e documentação.  
+
+- **Ferramentas adicionais**  
+  - **kubectl**: utilizado para gerenciar os recursos Kubernetes.  
+  - **Prometheus e Grafana**: instalados posteriormente para observabilidade (Etapa 2).  
+
+---
+
+## 📌 Fluxo de Implementação
+
+1. Preparação do ambiente (Docker, Kubernetes, Git).  
+2. Empacotamento da aplicação em container e orquestração no Kubernetes (**Etapa 1**).  
+3. Configuração de observabilidade com Prometheus e Grafana (**Etapa 2**).  
+4. Testes de escalabilidade automática com HPA.  
+5. Evidências documentadas na pasta `docs/`.
+
+---
+
+## 🔧 Evidências das Instalações
+
+- **Docker Desktop em execução:**  
+  ![docker](docs/docker.png)
+
+- **Kubernetes ativado e nó em execução:**  
+  ![kubernetes](docs/kubernetes.png)
+
+- **Metrics-server funcionando:**  
+  ![metrics](docs/metrics.png)
+
+- **Git configurado e conectado ao GitHub:**  
+  ![git](docs/git.png)
+
+- **Estrutura do projeto:**  
+  ![estrutura](docs/estrutura.png)
+
+
 ## 1. Etapa 1 – Empacotamento e Orquestração
 Este documento reúne as evidências coletadas durante a **Etapa 1** do protótipo, que consistiu em empacotar a aplicação `aiops-app` em containers e orquestrá-la em ambiente Kubernetes (Docker Desktop).
 
