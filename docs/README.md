@@ -45,10 +45,10 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 - **Kubernetes ativado no Docker Desktop e nó em execução:**  
   ![kubernetes](kubernetes.PNG)
 
-  **Cluster ativo (nó em execução):**  
-  ![cluster_ativo](cluster_ativo.PNGg)
+- **Cluster ativo (nó em execução):**  
+  ![cluster ativo](cluster_ativo.PNG)
 
-  - **Namespace criado (aiops-banco):**  
+- **Namespace criado (aiops-banco):**  
   ![namespace](namespace_ativo.PNG)
 
 - **Metrics-server funcionando (CPU/Memória):**  
@@ -57,7 +57,7 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 - **Git instalado e configurado localmente:**  
   ![git](git.PNG)
 
-  **Repositório conectado ao GitHub:**  
+- **Repositório conectado ao GitHub:**  
   ![github](github.PNG)
 
   
