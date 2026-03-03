@@ -109,3 +109,110 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 
 ---
 
+# 📊 Etapa 2 – Observabilidade com Prometheus e Grafana
+
+## ⚙️ Instalações e Configurações
+
+- **Prometheus Operator (via Helm)**
+  ```bash
+  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  helm repo update
+  helm install prometheus prometheus-community/kube-prometheus-stack -n aiops-banco
+  ```
+
+- **Metrics-server**
+  ```bash
+  kubectl apply -f metrics-server-deployment.yaml
+  ```
+  Necessário para fornecer métricas de CPU/memória ao Kubernetes e habilitar o HPA.
+
+- **Deployment da aplicação**
+  Arquivo: `aiops-app-deployment.yaml`  
+  👉 Define os pods da aplicação e expõe a porta 8000.
+
+- **Service da aplicação**
+  Arquivo: `aiops-service.yaml`  
+  👉 Exposição interna da aplicação para que Prometheus consiga coletar métricas.
+
+- **ServiceMonitor**
+  Arquivo: `aiops-servicemonitor.yaml`  
+  👉 Configura Prometheus para coletar métricas da aplicação.
+
+- **Horizontal Pod Autoscaler (HPA)**
+  Arquivo: `aiops-hpa.yaml`  
+  👉 Define regras de escalabilidade automática com base em métricas de CPU.
+
+---
+
+## 📌 Comandos, Saídas e Evidências
+
+### 1. Exposição de métricas pela aplicação
+- **Port-forward:**
+  ```bash
+  kubectl port-forward svc/aiops-app 8000:8000 -n aiops-banco
+  ```
+- **Acesso às métricas:**
+  ```bash
+  curl http://localhost:8000/metrics
+  ```
+- **Saída esperada:**
+  ```
+  # HELP aiops_anomaly_score Score de anomalia calculado pelo modelo
+  # TYPE aiops_anomaly_score gauge
+  aiops_anomaly_score 0.15
+  ```
+- **Evidência:** `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+
+---
+
+### 2. Coleta de métricas pelo Prometheus
+- **Query PromQL:**
+  ```promql
+  aiops_anomaly_score
+  ```
+- **Saída esperada:**
+  ```
+  aiops_anomaly_score{instance="aiops-app:8000",job="aiops-monitor"} 0.15
+  ```
+- **Evidência:** `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+
+---
+
+### 3. Visualização no Grafana
+- **Queries configuradas:**
+  ```promql
+  # Consumo médio de CPU por pod
+  rate(container_cpu_usage_seconds_total{namespace="aiops-banco"}[2m])
+
+  # Score de anomalia
+  aiops_anomaly_score
+  ```
+- **Saída esperada:**
+  - Gráfico de CPU por pod.  
+  - Gráfico do score de anomalia.  
+  - Gráfico mostrando réplicas do HPA ao longo do tempo.
+- **Evidência:** `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+
+---
+
+### 4. Comportamento do HPA
+- **Comando:**
+  ```bash
+  kubectl get hpa -n aiops-banco
+  ```
+- **Saída esperada:**
+  ```
+  NAME         REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+  aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10m
+  ```
+- **Evidência:** `[Parece que o resultado não era seguro para exibição. Vamos mudar as coisas e tentar outra opção!]`
+
+---
+
+## ✅ Conclusão da Etapa 2
+- A aplicação expõe métricas customizadas (`aiops_anomaly_score`).  
+- O Prometheus coleta e armazena métricas em tempo real.  
+- O Grafana exibe dashboards configurados com métricas da aplicação e do cluster.  
+- O HPA reage dinamicamente a cargas, escalando réplicas conforme necessário.  
+
+---
