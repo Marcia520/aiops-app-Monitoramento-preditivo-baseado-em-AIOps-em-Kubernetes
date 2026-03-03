@@ -28,17 +28,7 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 
 ---
 
-## 📌 Fluxo de Implementação
-
-1. Preparação do ambiente (Docker, Kubernetes, Git).  
-2. Empacotamento da aplicação em container e orquestração no Kubernetes (**Etapa 1**).  
-3. Configuração de observabilidade com Prometheus e Grafana (**Etapa 2**).  
-4. Testes de escalabilidade automática com HPA.  
-5. Evidências documentadas na pasta `docs/`.
-
----
-
-## 🔧 Evidências das Instalações
+## 🔧 Evidências
 
 - **Docker Desktop em execução:**  
   ![docker](docker.PNG)
@@ -60,9 +50,6 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 
 - **Repositório conectado ao GitHub:**  
   ![github](github.PNG)
-
-  
-
 
 ---
 
@@ -106,5 +93,12 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 - **Descrição:**  
   Durante a execução de carga simulada (via BusyBox), o HPA detectou aumento de CPU e escalou a aplicação, criando novos pods automaticamente.
 ![escala_automatica](escala_automatica.PNG)
+
+---
+
+## ✅ Conclusão da Etapa 1
+
+Nesta etapa, a aplicação foi empacotada em contêineres Docker e orquestrada em Kubernetes, com escalabilidade automática via HPA.  
+O ambiente foi validado com métricas de CPU/memória, probes de saúde e simulações de falhas.  
 
 ---
