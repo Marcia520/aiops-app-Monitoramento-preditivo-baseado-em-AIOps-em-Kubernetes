@@ -44,7 +44,7 @@ Este documento reúne as evidências coletadas durante a **Etapa 1** do protóti
 ## 4. Escalada automática
 - **Descrição:**  
   Durante a execução de carga simulada (via BusyBox), o HPA detectou aumento de CPU e escalou a aplicação, criando novos pods automaticamente.
-![escalada](docs/escala automatica.PNG)
+![escala automatica](docs/escala automatica.PNG)
 
 ---
 
