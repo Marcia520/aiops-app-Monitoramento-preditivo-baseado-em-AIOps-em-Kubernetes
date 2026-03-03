@@ -31,25 +31,25 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 ## 🔧 Evidências
 
 - **Docker Desktop em execução:**  
-  ![docker](docker.PNG)
+ ![docker](docs/docker.PNG)
 
 - **Kubernetes ativado no Docker Desktop e nó em execução:**  
-  ![kubernetes](kubernetes.PNG)
+  ![kubernetes](docs/kubernetes.PNG)
 
 - **Cluster ativo (nó em execução):**  
-  ![cluster ativo](cluster_ativo.PNG)
+  ![cluster ativo](docs/cluster_ativo.PNG)
 
 - **Namespace criado (aiops-banco):**  
-  ![namespace](namespace_ativo.PNG)
+  ![namespace](docs/namespace_ativo.PNG)
 
 - **Metrics-server funcionando (CPU/Memória):**  
-  ![metrics Server](metrics_server.PNG)
+  ![metrics Server](docs/metrics_server.PNG)
 
 - **Git instalado e configurado localmente:**  
-  ![git](git.PNG)
+ ![git](docs/git.PNG)
 
 - **Repositório conectado ao GitHub:**  
-  ![github](github.PNG)
+ ![github](docs/github.PNG)
 
 ---
 
@@ -61,7 +61,7 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 - **Descrição:**  
   Lista todos os pods ativos no namespace `aiops-banco`, confirmando que a aplicação e os componentes de observabilidade estão em execução.
 - **Evidência:**  
- ![pods](pods.PNG)
+ ![pods](docs/pods.PNG)
 
 ---
 
@@ -73,7 +73,7 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 - **Descrição:**  
   Exibe consumo de CPU e memória dos pods, validando que o **metrics-server** está funcionando corretamente.
 - **Evidência:**  
-  ![metrics](metricas.PNG)
+ ![metricas](docs/metricas.PNG)
 
 ---
 
@@ -85,14 +85,14 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 - **Descrição:**  
   Mostra o comportamento do **Horizontal Pod Autoscaler (HPA)**, incluindo limites de CPU, número mínimo/máximo de pods e réplicas atuais.
 - **Evidência:**  
- ![hpa](hpa.PNG)
+ ![hpa](docs/hpa.PNG)
 
 ---
 
 ## 4. Escalada automática
 - **Descrição:**  
   Durante a execução de carga simulada (via BusyBox), o HPA detectou aumento de CPU e escalou a aplicação, criando novos pods automaticamente.
-![escala_automatica](escala_automatica.PNG)
+![escala_automatica](docs/escala_automatica.PNG)
 
 ---
 
