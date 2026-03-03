@@ -40,21 +40,27 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 ## 🔧 Evidências das Instalações
 
 - **Docker Desktop em execução:**  
-  ![docker](docs/docker.png)
+  ![docker](docker.png)
 
-- **Kubernetes ativado e nó em execução:**  
-  ![kubernetes](docs/kubernetes.png)
+- **Kubernetes ativado ativado no Docker Desktop e nó em execução:**  
+  ![kubernetes](kubernetes.png)
 
-- **Metrics-server funcionando:**  
-  ![metrics](docs/metrics.png)
+  **Cluster ativo (nó em execução):**  
+  ![cluster_ativo](cluster_ativo.png)
 
-- **Git configurado e conectado ao GitHub:**  
-  ![git](docs/git.png)
+  - **Namespace criado (aiops-banco):**  
+  ![namespace](/namespace.png)
 
-- **Estrutura do projeto:**  
-  ![estrutura](docs/estrutura.png)
+- **Metrics-server funcionando (CPU/Memória):**  
+  ![metrics_server](metrics_server.png)
 
+- **Git instalado e configurado localmente:**  
+  ![git](git.png)
 
+  **Repositório conectado ao GitHub:**  
+  ![github](github.png)
+
+  
 ## 1. Etapa 1 – Empacotamento e Orquestração
 Este documento reúne as evidências coletadas durante a **Etapa 1** do protótipo, que consistiu em empacotar a aplicação `aiops-app` em containers e orquestrá-la em ambiente Kubernetes (Docker Desktop).
 
