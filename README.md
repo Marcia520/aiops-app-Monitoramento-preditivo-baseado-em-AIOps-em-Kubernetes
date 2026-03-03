@@ -14,11 +14,34 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 ---
 
 ## 🔹 Tecnologias utilizadas
-- **Python** → aplicação principal  
-- **Isolation Forest** → detecção de anomalias  
-- **Prometheus** → coleta de métricas  
-- **Grafana** → visualização  
+
+### 📌 Linguagens e Frameworks
+- **Python 3.10** → linguagem principal da aplicação  
+- **Flask** → framework para API RESTful  
+- **Scikit-learn** → biblioteca para aprendizado de máquina (Isolation Forest)  
+  
+### 📌 Infraestrutura e Orquestração
+- **Docker** → empacotamento da aplicação em contêineres  
 - **Kubernetes** → orquestração e deploy  
+- **Docker Desktop** → ambiente local para simular o cluster Kubernetes  
+- **Helm** → instalação de Prometheus e Grafana via charts  
+
+### 📌 Observabilidade
+- **Prometheus** → coleta de métricas  
+- **Grafana** → visualização e dashboards  
+- **PromQL** → consultas para análise de métricas  
+- **ServiceMonitor** → integração Prometheus Operator para coleta estruturada  
+
+### 📌 Inteligência Artificial
+- **Isolation Forest** → detecção de anomalias não supervisionada  
+- **Random Forest** → modelo complementar discutido  
+- **LSTM (Long Short-Term Memory)** → redes neurais para séries temporais (complementar)  
+
+### 📌 Engenharia de Software e DevOps
+- **GitOps** → versionamento declarativo da infraestrutura  
+- **TDD (Test-Driven Development)** → validação automatizada dos modelos  
+- **DDD (Domain-Driven Design)** → organização dos microsserviços por domínios funcionais  
+- **mTLS (mutual TLS)** → autenticação mútua e comunicação segura entre serviços  
 
 ---
 
@@ -62,7 +85,12 @@ kubectl apply -f k8s/aiops-service.yaml
 kubectl apply -f k8s/aiops-hpa.yaml
 kubectl apply -f k8s/aiops-servicemonitor.yaml
 kubectl apply -f k8s/metrics-server-deployment.yaml
+---
+### 👉 Garante que todos os manifestos estão aplicados no cluster Kubernetes rodando no Docker Desktop.
 
+---
+
+### 2. Verificar pods
 ### 1. Aplicar os manifestos
 ### 2. Verificar pods
 ```bash
