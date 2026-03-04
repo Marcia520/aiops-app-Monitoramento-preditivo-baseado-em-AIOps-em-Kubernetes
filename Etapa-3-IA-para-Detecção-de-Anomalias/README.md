@@ -1,18 +1,13 @@
-Perfeito, Márcia 🌟! Aqui está a versão **final do README.md da Etapa 3**, já com todas as seções integradas (introdução, experimentos, execução, saídas, evidências, modelos complementares, notebooks, requisitos e conclusão), totalmente alinhado ao seu TCC:
+## 📊 Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
 
----
-
-```markdown
-# 📊 Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
-
-## 🔹 Introdução
+### 🔹 Introdução
 Esta etapa concentra-se na aplicação de **Inteligência Artificial orientada a Operações (AIOps)** para o monitoramento preditivo de ambientes bancários distribuídos em Kubernetes.  
 O objetivo é detectar comportamentos atípicos em métricas operacionais e padrões de acesso, antecipando falhas, reduzindo o tempo de resposta a incidentes e fortalecendo a resiliência operacional.  
 O algoritmo principal utilizado foi o **Isolation Forest**, complementado por discussões comparativas com **Random Forest** e **LSTM**, conforme fundamentação teórica do TCC.
 
 ---
 
-## 🔹 Experimentos Realizados
+### 🔹 Experimentos Realizados
 
 ### 1. Detecção de Anomalias em Serviços Bancários
 - **Contexto:** análise de métricas operacionais (CPU, memória, latência) de serviços críticos como autenticação, boletos e transações.  
@@ -128,7 +123,3 @@ pip install pandas scikit-learn matplotlib numpy
 ```
 
 ---
-
-✅ Agora o README da Etapa 3 está **finalizado e completo**, pronto para ser colocado no repositório. Ele cobre **implementação prática, fundamentação teórica, execução, evidências e conclusão**.  
-
-👉 Quer que eu também monte um **fluxograma em Mermaid** para incluir no README, mostrando o pipeline da Etapa 3 (dados → modelo → detecção → evidências)? Isso deixaria a documentação ainda mais visual e didática.
