@@ -2,11 +2,23 @@
 
 #### 🔹 Introdução
 Nesta etapa validamos os algoritmos de IA aplicados ao monitoramento preditivo em ambientes bancários distribuídos.  
-O foco foi avaliar o desempenho do **Isolation Forest** em cenários simulados, realizar testes controlados de falhas e integrar os resultados ao **Prometheus/Grafana** para monitoramento em tempo real.  
-A etapa também considerou critérios regulatórios, como a **Resolução BCB nº 304/2023** e a **LGPD**, garantindo aderência às exigências de resiliência operacional e proteção de dados.
+O foco foi avaliar o desempenho do **Isolation Forest** em cenários simulados, realizar testes controlados de falhas e integrar os resultados ao **Prometheus/Grafana** para monitoramento em tempo real.
+O objetivo é antecipar falhas operacionais, reduzir o tempo médio de resposta a incidentes (MTTR) e fortalecer a resiliência de serviços críticos, em conformidade com requisitos regulatórios como a Resolução BCB nº 304/2023 e a LGPD.
 
 ---
 
+#### 🔹 Arquitetura
+
+    Kubernetes + Docker: orquestração e escalabilidade automática via Horizontal Pod Autoscaler (HPA).
+
+    Prometheus: coleta de métricas operacionais e personalizadas (aiops_anomaly_score).
+
+    Grafana: visualização em tempo real e alertas configuráveis.
+
+    Isolation Forest: algoritmo principal para detecção de anomalias em métricas operacionais e padrões de acesso.
+
+    GitOps, mTLS, TDD, DDD: práticas modernas de Engenharia de Software para segurança, rastreabilidade e confiabilidade.
+    
 #### 🔹 Experimentos Realizados
 
 ##### 1. Aplicação do Isolation Forest
