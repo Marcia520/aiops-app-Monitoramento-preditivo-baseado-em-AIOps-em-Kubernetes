@@ -59,7 +59,8 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
   kubectl get pods -n aiops-banco
   ```
 - **Descrição:**  
-  Lista todos os pods ativos no namespace `aiops-banco`, confirmando que a aplicação e os componentes de observabilidade estão em execução. 
+  Lista todos os pods ativos no namespace `aiops-banco`, confirmando que a aplicação e os componentes de observabilidade estão em execução.
+  
  ![pods](docs/pods.PNG)
 
 ---
@@ -70,7 +71,8 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
   kubectl top pods -n aiops-banco
   ```
 - **Descrição:**  
-  Exibe consumo de CPU e memória dos pods, validando que o **metrics-server** está funcionando corretamente. 
+  Exibe consumo de CPU e memória dos pods, validando que o **metrics-server** está funcionando corretamente.
+  
  ![metricas](docs/metricas.PNG)
 
 ---
@@ -81,7 +83,8 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
   kubectl get hpa -n aiops-banco --watch
   ```
 - **Descrição:**  
-  Mostra o comportamento do **Horizontal Pod Autoscaler (HPA)**, incluindo limites de CPU, número mínimo/máximo de pods e réplicas atuais. 
+  Mostra o comportamento do **Horizontal Pod Autoscaler (HPA)**, incluindo limites de CPU, número mínimo/máximo de pods e réplicas atuais.
+  
  ![hpa](docs/hpa.PNG)
 
 ---
@@ -89,6 +92,7 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 ### 4. Escalada automática
 - **Descrição:**  
   Durante a execução de carga simulada (via BusyBox), o HPA detectou aumento de CPU e escalou a aplicação, criando novos pods automaticamente.
+  
 ![escala_automatica](docs/escala_automatica.PNG)
 
 ---
