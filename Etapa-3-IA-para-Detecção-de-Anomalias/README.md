@@ -15,7 +15,7 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 - **Script:** `scripts/isolationforest_servicos.py`  
 - **Saída esperada:** tabela com serviços classificados como **Normais (1)** ou **Anômalos (-1)**, além de gráfico de dispersão.
 
-**Tabela de Resultados (exemplo):**
+**Resultado:**
 
 | Serviço              | Uso de CPU | Uso de Memória | Latência (ms) | Status   |
 |----------------------|------------|----------------|---------------|----------|
@@ -34,7 +34,7 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 - **Script:** `scripts/isolationforest_acessos.py`  
 - **Saída esperada:** gráfico com acessos normais (azul) e suspeitos (vermelho), além de tabela com os primeiros registros classificados como **ALERTA**.
 
-**Tabela de Resultados (exemplo):**
+**Resultado:**
 
 | Padrão de Acesso       | Quantidade | Percentual | Características                  |
 |-------------------------|------------|------------|----------------------------------|
