@@ -63,10 +63,8 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 - `app.py`
 - `Dockerfile`
 - `requirements.txt`
-- `README.md`
 
 #### Etapa-1-Empacotamento-Orquestracao/
-- **k8s/** → manifests iniciais (deployment, service, HPA, metrics-server)
 - **docs/** → prints da instalação e configuração (Docker, Kubernetes, Git, GitHub)
 - `README.md` → explicação da etapa
 
