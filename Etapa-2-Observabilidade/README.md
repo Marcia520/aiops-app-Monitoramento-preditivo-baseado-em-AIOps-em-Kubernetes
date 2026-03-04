@@ -120,7 +120,7 @@ kubectl get hpa -n aiops-banco
 
 ##### Simular carga para ver escalonamento
 kubectl run -i --tty load-generator --image=busybox --restart=Never -n aiops-banco -- /bin/sh
-# Dentro do pod:
+##### Dentro do pod:
 while true; do wget -q -O- http://aiops-service:8000/; done
 
 **Saída esperada:**
