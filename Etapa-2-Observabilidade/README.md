@@ -11,29 +11,11 @@ Durante esta etapa, foram realizadas as seguintes instalações e configuraçõe
   helm repo update
   helm install prometheus prometheus-community/kube-prometheus-stack -n aiops-banco
   ```
-  Instala Prometheus, Alertmanager e Grafana no namespace `aiops-banco`.  
-  **Evidência:** `docs/prometheus-operator.png`
+  
+- **Prometheus, Alertmanager e Grafana no namespace `aiops-banco`:**    
+ ![Prometheus](docs/prometheus-operator.PNG)
+ ![Prometheus](docs/prometheus-operator2.PNG)
 
-Aqui está, Márcia 🌟!  
-Segue o trecho em formato **README.md**, já com os comandos de evidência para o **Metrics-server**. Assim você mantém o padrão de documentação com comandos + espaço para os prints.
-
----
-
-```markdown
-# 📊 Etapa 2 – Observabilidade com Prometheus e Grafana
-
-## ⚙️ Instalações e Configurações
-
-### 🔹 Prometheus Operator (via Helm)
-```bash
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo update
-helm install prometheus prometheus-community/kube-prometheus-stack -n aiops-banco
-```
-Instala Prometheus, Alertmanager e Grafana no namespace `aiops-banco`.  
-**Evidência:** `docs/prometheus-operator.png`
-
----
 
 ### 🔹 Metrics-server
 Arquivo: `metrics-server-deployment.yaml`
@@ -41,8 +23,6 @@ Arquivo: `metrics-server-deployment.yaml`
 ```bash
 kubectl apply -f metrics-server-deployment.yaml -n aiops-banco
 ```
-
-#### 📌 Comandos de evidência
 
 ```bash
 # Verificar se o pod do metrics-server está rodando
@@ -57,25 +37,17 @@ kubectl top pods -n aiops-banco
 ```
 
 #### 📌 Saídas esperadas
-- Pod `metrics-server-xxxxx` em estado **Running**.  
-- APIService `v1beta1.metrics.k8s.io` com status **True**.  
+- Pod `metrics-server` em estado **Running**.  
+- APIService  com status **True**.  
 - Listagem de nós e pods com consumo de CPU e memória.
 
-#### 📌 Evidências
-- `docs/metrics-server.png` → Pod rodando.  
-- `docs/metrics-server-apiservice.png` → APIService ativo.  
-- `docs/metrics-server-top-nodes.png` → Métricas de nós.  
-- `docs/metrics-server-top-pods.png` → Métricas de pods.
-```
-
+ ![Metric Server](docs/metric-server.PNG)
+ ![APIService ativo](docs/APIServices.PNG)
+ ![Métricas de nós](docs/metricas-nos.PNG)
+ ![Métricas de pods](docs/metricas-pods.PNG)
+ 
 ---
 
-Ótimo, Márcia 🌟!  
-Aqui está o bloco em **README.md** para evidenciar o **Deployment da aplicação, Service, ServiceMonitor e HPA**, já com os comandos de verificação, saídas esperadas e espaços para os prints:
-
----
-
-```markdown
 ### 🔹 Deployment da aplicação
 Arquivo: `aiops-app-deployment.yaml`  
 👉 Define os pods da aplicação e expõe a porta 8000.
@@ -93,9 +65,12 @@ kubectl get deployment aiops-app -n aiops-banco
 
 **Saída esperada:**
 - Pods `aiops-app-xxxxx` em estado **Running**.  
-- Deployment `aiops-app` criado e disponível.  
-
-**Evidência:** `docs/deployment.png`
+- Deployment `aiops-app` criado e disponível.
+  
+ ![Deployment](docs/deployment.PNG)
+ ![deployment-disponivel](docs/deployment-disponivel.PNG)
+ ![deployment-running](docs/deployment-running.PNG)
+ 
 
 ---
 
@@ -117,9 +92,11 @@ curl http://localhost:8000/metrics | head -n 10
 
 **Saída esperada:**
 - Service `aiops-service` criado.  
-- Endpoint `/metrics` acessível.  
+- Endpoint `/metrics` acessível.
 
-**Evidência:** `docs/service.png`
+ ![aiops-serviceo](docs/aiops-service.PNG)
+ ![Services](docs/services.PNG)
+ ![Métricas de nós](docs/aiops-service-criado.PNG)
 
 ---
 
@@ -134,11 +111,11 @@ kubectl apply -f aiops-servicemonitor.yaml -n aiops-banco
 # Verificar se o ServiceMonitor foi criado
 kubectl get servicemonitor -n aiops-banco | findstr aiops-servicemonitor
 ```
-
 **Saída esperada:**
 - ServiceMonitor `aiops-servicemonitor` criado e listado.  
 
-**Evidência:** `docs/servicemonitor.png`
+ ![aiops-service-monitor](docs/service-monitor.PNG)
+ ![aiops-service](docs/service-monitor-criado.PNG)
 
 ---
 
@@ -165,11 +142,10 @@ NAME         REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AG
 aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10m
 ```
 
-**Evidência:** `docs/hpa-config.png`
+ ![hpa](docs/hpa.PNG)
+ 
 ```
-
 ---
-
 
 ## 📌 Comandos, Saídas e Evidências
 
@@ -184,7 +160,8 @@ curl http://localhost:8000/metrics
 # TYPE aiops_anomaly_score gauge
 aiops_anomaly_score 0.15
 ```
-**Evidência:** `docs/metrics.png`
+
+ ![Metricas](docs/metrics-endpoint.PNG)
 
 ---
 
@@ -199,6 +176,8 @@ aiops_anomaly_score{instance="aiops-app:8000",job="aiops-monitor"} 0.15
 ```
 **Evidência:** `docs/prometheus.png`
 
+ ![Metric Server](docs/metricas.PNG)
+
 ---
 
 ### 3. Visualização no Grafana
@@ -210,18 +189,22 @@ rate(container_cpu_usage_seconds_total{namespace="aiops-banco"}[2m])
 # Score de anomalia
 aiops_anomaly_score
 ```
-
 **Saída esperada:**
 - Gráfico de CPU por pod.  
 - Gráfico do score de anomalia.  
 - Gráfico mostrando réplicas do HPA ao longo do tempo.
 
-**Evidências:**
-- `docs/grafana-dashboard.png` → Dashboard consolidado com os quatro painéis.  
-- `docs/grafana-cpu.png` → Painel de CPU por pod.  
-- `docs/grafana-memoria.png` → Painel de memória por pod.  
-- `docs/grafana-anomalia.png` → Painel de score de anomalia.  
-- `docs/grafana-hpa.png` → Painel de réplicas do HPA.
+ **Painel de CPU por pod.**
+ ![grafana-cpu](docs/grafana-cpu.PNG)
+
+ **Painel de memória por pod**
+ ![grafana-memoria](docs/grafana-memoria.PNG)
+
+  **Painel de score de anomalia**
+ ![grafana-anomalia acesso](docs/grafana-anomalia acesso.PNG)
+
+  **Painel de réplicas do HPA**
+ ![hpa-grafana](docs/hpa-grafana.PNG)
 
 ---
 
@@ -234,7 +217,7 @@ kubectl get hpa -n aiops-banco
 NAME         REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
 aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10m
 ```
-**Evidência:** `docs/hpa.png`
+ ![hpa](docs/hpa.PNG)
 
 ---
 
@@ -244,8 +227,10 @@ aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10
 ```bash
 kubectl port-forward svc/prometheus-kube-prometheus-prometheus 9090:9090 -n aiops-banco
 ```
-👉 http://localhost:9090  
-**Evidência:** `docs/prometheus-access.png`
+👉 http://localhost:9090 
+
+**Acesso ao Prometheus**
+ ![Acesso Prometheus](docs/acesso-prometheus.PNG)
 
 ---
 
@@ -254,15 +239,10 @@ kubectl port-forward svc/prometheus-kube-prometheus-prometheus 9090:9090 -n aiop
 kubectl port-forward svc/prometheus-grafana 3000:80 -n aiops-banco
 ```
 👉 http://localhost:3000  
-**Evidência:** `docs/grafana-access.png`
 
----
+**Acesso ao Grafana**
 
-### 🔑 Credenciais do Grafana
-```bash
-kubectl get secret prometheus-grafana -n aiops-banco -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
-```
-**Evidência:** `docs/grafana-credentials.png`
+ ![Acesso Grafana](docs/acesso-grafana.PNG)
 
 ---
 
