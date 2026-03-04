@@ -228,7 +228,7 @@ kubectl port-forward svc/prometheus-grafana 3000:80 -n aiops-banco
 
 ---
 
-### ✅ Conclusão
+#### ✅ Conclusão
 As evidências acima comprovam que:
 - As métricas foram expostas pela aplicação.  
 - Prometheus coletou e armazenou corretamente.  
