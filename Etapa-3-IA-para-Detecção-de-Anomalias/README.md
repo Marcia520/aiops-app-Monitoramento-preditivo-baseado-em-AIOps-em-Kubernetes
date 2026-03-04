@@ -1,7 +1,19 @@
+<<<<<<< HEAD
 ## 📊 Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
 
 ### 🔹 Introdução
 Esta etapa concentra-se na aplicação de **Inteligência Artificial orientada a Operações (AIOps)** para o monitoramento preditivo de ambientes bancários distribuídos em Kubernetes.  
+=======
+
+
+---
+
+```markdown
+# 📊 Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
+
+## 🔹 Introdução
+Nesta etapa aplicamos **Inteligência Artificial orientada a Operações (AIOps)** para o monitoramento preditivo de ambientes bancários distribuídos em Kubernetes.  
+>>>>>>> eea545b (Atualização das Etapas 3 e 4: notebooks e scripts revisados)
 O objetivo é detectar comportamentos atípicos em métricas operacionais e padrões de acesso, antecipando falhas, reduzindo o tempo de resposta a incidentes e fortalecendo a resiliência operacional.  
 O algoritmo principal utilizado foi o **Isolation Forest**, complementado por discussões comparativas com **Random Forest** e **LSTM**, conforme fundamentação teórica do TCC.
 
@@ -17,14 +29,19 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 
 **Tabela de Resultados (exemplo):**
 
-| Serviço              | Uso de CPU | Uso de Memória | Latência (ms) | Status   | Score Anomalia |
-|----------------------|------------|----------------|---------------|----------|----------------|
-| Autenticação         | 23.4%      | 156MB          | 89            | Normal   | 0.12           |
-| Processamento Pagto  | 45.6%      | 234MB          | 156           | Normal   | 0.08           |
-| Transações           | 82.3%      | 467MB          | 345           | Anômalo  | -0.67          |
-| Transferência Fundos | 76.8%      | 423MB          | 289           | Anômalo  | -0.54          |
+| Serviço              | Uso de CPU | Uso de Memória | Latência (ms) | Status   |
+|----------------------|------------|----------------|---------------|----------|
+| Autenticação         | 23.4%      | 156MB          | 89            | Normal   |
+| Processamento Pagto  | 45.6%      | 234MB          | 156           | Normal   |
+| Transações           | 82.3%      | 467MB          | 345           | Anômalo  |
+| Transferência Fundos | 76.8%      | 423MB          | 289           | Anômalo  |
 
+<<<<<<< HEAD
  ![Anomalia Serviços](docs/anomalias-servicos.png)
+=======
+**Evidências:**
+- O gráfico é salvo automaticamente em `docs/servicos-anomalias.png`.
+>>>>>>> eea545b (Atualização das Etapas 3 e 4: notebooks e scripts revisados)
 
 ---
 
@@ -43,7 +60,12 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 | Geolocalização Atípica  | 53         | 21.2%      | País diferente do cadastro       |
 | Padrão de Bot           | 45         | 18.0%      | Comportamento automatizado       |
 
+<<<<<<< HEAD
  ![Acessos Fraudulentos](docs/acessos-fraudulentos.png)
+=======
+**Evidências:**
+- O gráfico é salvo automaticamente em `docs/acessos-fraudulentos.png`.
+>>>>>>> eea545b (Atualização das Etapas 3 e 4: notebooks e scripts revisados)
 
 ---
 
@@ -63,9 +85,24 @@ python isolationforest_acessos.py
 
 ---
 
+<<<<<<< HEAD
 ### 🔹 Saídas Esperadas
 - **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + gráfico de dispersão.  
 - **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico com pontos azuis (normais) e vermelhos (alerta).
+=======
+## 🔹 Saídas Esperadas
+- **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + gráfico salvo em `docs/servicos-anomalias.png`.  
+- **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico salvo em `docs/acessos-fraudulentos.png`.  
+
+Esses arquivos podem ser consultados como **evidências visuais** e estão versionados no repositório.
+
+---
+
+## 🔹 Bibliotecas Utilizadas
+- **Scikit-learn** → biblioteca de aprendizado de máquina utilizada para implementar o algoritmo Isolation Forest.  
+- **Pandas / NumPy** → manipulação e análise de dados.  
+- **Matplotlib** → geração de gráficos e visualizações.  
+>>>>>>> eea545b (Atualização das Etapas 3 e 4: notebooks e scripts revisados)
 
 ---
 
@@ -96,7 +133,8 @@ Para garantir a reprodutibilidade dos experimentos, foram criados notebooks inte
    ```bash
    python -m notebook
    ```
-4. Abra os arquivos `.ipynb` e execute todas as células (**Kernel → Restart & Run All**) para visualizar os resultados.
+4. Abra os arquivos `.ipynb` e execute todas as células (**Kernel → Restart & Run All**) para visualizar os resultados.  
+   - Os gráficos também são salvos automaticamente em `../docs/`.
 
 ---
 
@@ -115,7 +153,14 @@ pip install pandas scikit-learn matplotlib numpy
 - Nos acessos, classificou cerca de **5% dos registros como suspeitos**, com métricas de avaliação: **Precisão = 92,3%**, **Recall = 88,7%**, **F1 Score = 90,4%**.  
 - A abordagem é tecnicamente viável e aderente às exigências regulatórias (LGPD, Resolução BCB nº 304/2023), fortalecendo a resiliência operacional em ambientes bancários distribuídos.  
 - O **Random Forest** e o **LSTM** foram discutidos como modelos complementares, indicando caminhos futuros para ampliar a capacidade preditiva da solução.  
-- A integração com Kubernetes e ferramentas de observabilidade (Prometheus e Grafana) transforma o monitoramento de **reativo** em **preditivo**, alinhando-se ao objetivo central do TCC.
+- A integração com Kubernetes e ferramentas de observabilidade (Prometheus e Grafana) será detalhada na **Etapa 4**, transformando o monitoramento de **reativo** em **preditivo**.  
+- Os gráficos salvos em `docs/` comprovam visualmente os resultados obtidos, servindo como evidências práticas da implementação.  
 
 ---
 ```
+<<<<<<< HEAD
+=======
+
+---
+
+>>>>>>> eea545b (Atualização das Etapas 3 e 4: notebooks e scripts revisados)
