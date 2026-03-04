@@ -97,7 +97,7 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 
 ---
 
-## ✅ Conclusão
+### ✅ Conclusão
 
 Nesta etapa, a aplicação foi empacotada em contêineres Docker e orquestrada em Kubernetes, com escalabilidade automática via HPA.  
 O ambiente foi validado com métricas de CPU/memória, probes de saúde e simulações de falhas.  
