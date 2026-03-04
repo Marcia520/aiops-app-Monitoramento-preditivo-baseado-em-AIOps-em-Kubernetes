@@ -6,11 +6,10 @@
 Durante esta etapa, foram realizadas as seguintes instalações e configurações:
 
 - **Prometheus Operator (via Helm)**
-  ```bash
+
   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
   helm repo update
   helm install prometheus prometheus-community/kube-prometheus-stack -n aiops-banco
-  ```
   
 - **Prometheus, Alertmanager e Grafana no namespace `aiops-banco`:**    
  ![Prometheus](docs/prometheus-operator.PNG)
@@ -20,11 +19,8 @@ Durante esta etapa, foram realizadas as seguintes instalações e configuraçõe
 ### 🔹 Metrics-server
 Arquivo: `metrics-server-deployment.yaml`
 
-```bash
 kubectl apply -f metrics-server-deployment.yaml -n aiops-banco
-```
 
-```bash
 # Verificar se o pod do metrics-server está rodando
 kubectl get pods -n kube-system | findstr metrics-server
 
@@ -34,7 +30,6 @@ kubectl get apiservice | findstr metrics.k8s.io
 # Testar coleta de métricas
 kubectl top nodes
 kubectl top pods -n aiops-banco
-```
 
 #### 📌 Saídas esperadas
 - Pod `metrics-server` em estado **Running**.  
@@ -52,7 +47,6 @@ kubectl top pods -n aiops-banco
 Arquivo: `aiops-app-deployment.yaml`  
 👉 Define os pods da aplicação e expõe a porta 8000.
 
-```bash
 # Aplicar o deployment
 kubectl apply -f aiops-app-deployment.yaml -n aiops-banco
 
@@ -61,7 +55,6 @@ kubectl get pods -n aiops-banco | findstr aiops-app
 
 # Verificar o deployment
 kubectl get deployment aiops-app -n aiops-banco
-```
 
 **Saída esperada:**
 - Pods `aiops-app` em estado **Running**.  
@@ -77,7 +70,6 @@ kubectl get deployment aiops-app -n aiops-banco
 Arquivo: `aiops-service.yaml`  
 👉 Exposição interna da aplicação para que Prometheus consiga coletar métricas.
 
-```bash
 # Aplicar o service
 kubectl apply -f aiops-service.yaml -n aiops-banco
 
@@ -87,7 +79,7 @@ kubectl get svc -n aiops-banco | findstr aiops-service
 # Testar acesso às métricas
 kubectl port-forward svc/aiops-service 8000:8000 -n aiops-banco
 curl http://localhost:8000/metrics | head -n 10
-```
+
 **Saída esperada:**
 - Service `aiops-service` criado.  
 - Endpoint `/metrics` acessível.
@@ -102,13 +94,12 @@ curl http://localhost:8000/metrics | head -n 10
 Arquivo: `aiops-servicemonitor.yaml`  
 👉 Configura Prometheus para coletar métricas da aplicação.
 
-```bash
 # Aplicar o ServiceMonitor
 kubectl apply -f aiops-servicemonitor.yaml -n aiops-banco
 
 # Verificar se o ServiceMonitor foi criado
 kubectl get servicemonitor -n aiops-banco | findstr aiops-servicemonitor
-```
+
 **Saída esperada:**
 - ServiceMonitor `aiops-servicemonitor` criado e listado.  
 
@@ -121,7 +112,6 @@ kubectl get servicemonitor -n aiops-banco | findstr aiops-servicemonitor
 Arquivo: `aiops-hpa.yaml`  
 👉 Define regras de escalabilidade automática com base em métricas de CPU.
 
-```bash
 # Aplicar o HPA
 kubectl apply -f aiops-hpa.yaml -n aiops-banco
 
@@ -132,45 +122,39 @@ kubectl get hpa -n aiops-banco
 kubectl run -i --tty load-generator --image=busybox --restart=Never -n aiops-banco -- /bin/sh
 # Dentro do pod:
 while true; do wget -q -O- http://aiops-service:8000/; done
-```
 
 **Saída esperada:**
-```
+
 NAME         REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
 aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10m
-```
 
  ![hpa](docs/hpa.PNG)
- 
-```
----
-
+--- 
 ## 📌 Comandos, Saídas e Evidências
 
 ### 1. Exposição de métricas pela aplicação
-```bash
+
 kubectl port-forward svc/aiops-service 8000:8000 -n aiops-banco
 curl http://localhost:8000/metrics
-```
+
 **Saída esperada:**
-```
+
 # HELP aiops_anomaly_score Score de anomalia calculado pelo modelo
 # TYPE aiops_anomaly_score gauge
 aiops_anomaly_score 0.15
-```
+
  ![Metricas](docs/metrics-endpoint.PNG)
 
 ---
 
 ### 2. Coleta de métricas pelo Prometheus
 **Query PromQL:**
-```promql
+
 aiops_anomaly_score
-```
+
 **Saída esperada:**
-```
+
 aiops_anomaly_score{instance="aiops-app:8000",job="aiops-monitor"} 0.15
-```
 
  ![aiops_anomaly](docs/access_anomaly.PNG)
 
@@ -178,13 +162,13 @@ aiops_anomaly_score{instance="aiops-app:8000",job="aiops-monitor"} 0.15
 
 ### 3. Visualização no Grafana
 **Queries configuradas:**
-```promql
+
 # Consumo médio de CPU por pod
 rate(container_cpu_usage_seconds_total{namespace="aiops-banco"}[2m])
 
 # Score de anomalia
 aiops_anomaly_score
-```
+
 **Saída esperada:**
 - Gráfico de CPU por pod.  
 - Gráfico do score de anomalia.  
@@ -205,24 +189,23 @@ aiops_anomaly_score
 ---
 
 ### 4. Comportamento do HPA
-```bash
+
 kubectl get hpa -n aiops-banco
-```
+
 **Saída esperada:**
-```
+
 NAME         REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
 aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10m
-```
+
  ![hpa](docs/hpa.PNG)
-
+ 
 ---
-
 ## 🌐 Acesso ao Prometheus e Grafana
 
 ### 🔎 Prometheus
-```bash
+
 kubectl port-forward svc/prometheus-kube-prometheus-prometheus 9090:9090 -n aiops-banco
-```
+
 👉 http://localhost:9090 
 
 **Acesso ao Prometheus**
@@ -231,9 +214,9 @@ kubectl port-forward svc/prometheus-kube-prometheus-prometheus 9090:9090 -n aiop
 ---
 
 ### 📊 Grafana
-```bash
+
 kubectl port-forward svc/prometheus-grafana 3000:80 -n aiops-banco
-```
+
 👉 http://localhost:3000  
 
 **Acesso ao Grafana**
