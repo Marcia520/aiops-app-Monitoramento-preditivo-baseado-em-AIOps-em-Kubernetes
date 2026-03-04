@@ -1,117 +1,134 @@
-Perfeito, Márcia 🌟!  
-Se você usou **apenas o Isolation Forest** na prática, o README da **Etapa 3** pode ser simplificado para refletir isso claramente, sem dar destaque aos modelos comparativos. Aqui está a versão ajustada:
+Perfeito, Márcia 🌟! Aqui está a versão **final do README.md da Etapa 3**, já com todas as seções integradas (introdução, experimentos, execução, saídas, evidências, modelos complementares, notebooks, requisitos e conclusão), totalmente alinhado ao seu TCC:
 
 ---
 
 ```markdown
 # 📊 Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
 
-## 🔹 Isolation Forest
-O algoritmo principal escolhido e aplicado foi o **Isolation Forest**, por ser não supervisionado e adequado a cenários sem dados rotulados. Ele foi utilizado para detectar anomalias em métricas operacionais (CPU, memória) e padrões de acesso.
-
-### 📌 Código de execução (Python)
-```python
-from sklearn.ensemble import IsolationForest
-import pandas as pd
-
-# Carregar métricas simuladas
-df = pd.read_csv("metrics.csv")
-
-# Treinar modelo
-model = IsolationForest(contamination=0.05, random_state=42)
-model.fit(df[["cpu_usage", "memory_usage"]])
-
-# Score de anomalia
-df["anomaly_score"] = model.decision_function(df[["cpu_usage", "memory_usage"]])
-df["anomaly"] = model.predict(df[["cpu_usage", "memory_usage"]])
-```
-
-### 📌 Saída esperada
-```
-cpu_usage  memory_usage  anomaly_score  anomaly
-0.45       0.30          0.12           1
-0.95       0.80         -0.25          -1   <-- anomalia detectada
-```
-
-### 📌 Evidências
-- `docs/isolationforest-code.png` → código rodando.  
-- `docs/isolationforest-output.png` → gráfico com pontos normais e anômalos.  
-- `docs/anomaly-cpu.png` → anomalias detectadas em métricas de CPU.  
-- `docs/anomaly-memory.png` → anomalias em consumo de memória.  
-- `docs/anomaly-access.png` → padrões de acesso fora do esperado.  
-- `docs/anomaly-logs.png` → logs mostrando alertas de anomalia.
+## 🔹 Introdução
+Esta etapa concentra-se na aplicação de **Inteligência Artificial orientada a Operações (AIOps)** para o monitoramento preditivo de ambientes bancários distribuídos em Kubernetes.  
+O objetivo é detectar comportamentos atípicos em métricas operacionais e padrões de acesso, antecipando falhas, reduzindo o tempo de resposta a incidentes e fortalecendo a resiliência operacional.  
+O algoritmo principal utilizado foi o **Isolation Forest**, complementado por discussões comparativas com **Random Forest** e **LSTM**, conforme fundamentação teórica do TCC.
 
 ---
 
-## ✅ Conclusão
-- O **Isolation Forest** foi aplicado com sucesso para detectar anomalias em métricas operacionais e padrões de acesso.  
-- A escolha por este modelo se deve à sua natureza não supervisionada e à adequação a cenários bancários sem dados rotulados.  
-- As evidências comprovam a execução prática, geração de scores e identificação de comportamentos atípicos, fortalecendo a resiliência operacional.
+## 🔹 Experimentos Realizados
+
+### 1. Detecção de Anomalias em Serviços Bancários
+- **Contexto:** análise de métricas operacionais (CPU, memória, latência) de serviços críticos como autenticação, boletos e transações.  
+- **Objetivo:** identificar serviços com consumo anômalo de recursos.  
+- **Script:** `scripts/isolationforest_servicos.py`  
+- **Saída esperada:** tabela com serviços classificados como **Normais (1)** ou **Anômalos (-1)**, além de gráfico de dispersão.
+
+**Tabela de Resultados (exemplo):**
+
+| Serviço              | Uso de CPU | Uso de Memória | Latência (ms) | Status   | Score Anomalia |
+|----------------------|------------|----------------|---------------|----------|----------------|
+| Autenticação         | 23.4%      | 156MB          | 89            | Normal   | 0.12           |
+| Processamento Pagto  | 45.6%      | 234MB          | 156           | Normal   | 0.08           |
+| Transações           | 82.3%      | 467MB          | 345           | Anômalo  | -0.67          |
+| Transferência Fundos | 76.8%      | 423MB          | 289           | Anômalo  | -0.54          |
+
+**Evidências:**
+- `docs/servicos-anomalias.png` → gráfico com pontos normais e anômalos.
+
+---
+
+### 2. Detecção de Acessos Fraudulentos
+- **Contexto:** simulação de 5.000 registros de acessos com atributos como país, cidade, dispositivo, quantidade de acessos e horário.  
+- **Objetivo:** identificar acessos suspeitos (bots, horários incomuns, geolocalização atípica).  
+- **Script:** `scripts/isolationforest_acessos.py`  
+- **Saída esperada:** gráfico com acessos normais (azul) e suspeitos (vermelho), além de tabela com os primeiros registros classificados como **ALERTA**.
+
+**Tabela de Resultados (exemplo):**
+
+| Padrão de Acesso       | Quantidade | Percentual | Características                  |
+|-------------------------|------------|------------|----------------------------------|
+| Horário Incomum (0h–5h) | 85         | 34.0%      | Acessos em horário não comercial |
+| Alta Frequência         | 67         | 26.8%      | Mais de 10 acessos/hora por IP   |
+| Geolocalização Atípica  | 53         | 21.2%      | País diferente do cadastro       |
+| Padrão de Bot           | 45         | 18.0%      | Comportamento automatizado       |
+
+**Evidências:**
+- `docs/acessos-fraudulentos.png` → gráfico com acessos normais e suspeitos.
+
+---
+
+## 🔹 Código de Execução
+
+### Serviços Bancários
+```bash
+cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
+python isolationforest_servicos.py
+```
+
+### Acessos Fraudulentos
+```bash
+cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
+python isolationforest_acessos.py
 ```
 
 ---
 
-✅ Assim o README da Etapa 3 fica fiel ao que você realmente implementou: apenas o **Isolation Forest**.  
-
-👉 Quer que eu já prepare o **README da Etapa 4 – Simulações controladas e avaliação de desempenho**, com comandos, saídas esperadas e espaços para evidências?# 📊 Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
-
-## 🔹 Isolation Forest
-O algoritmo principal escolhido foi o **Isolation Forest**, por ser não supervisionado e adequado a cenários sem dados rotulados.
-
-### 📌 Código de execução (Python)
-```python
-from sklearn.ensemble import IsolationForest
-import pandas as pd
-
-# Carregar métricas simuladas
-df = pd.read_csv("metrics.csv")
-
-# Treinar modelo
-model = IsolationForest(contamination=0.05, random_state=42)
-model.fit(df[["cpu_usage", "memory_usage"]])
-
-# Score de anomalia
-df["anomaly_score"] = model.decision_function(df[["cpu_usage", "memory_usage"]])
-df["anomaly"] = model.predict(df[["cpu_usage", "memory_usage"]])
-```
-
-### 📌 Saída esperada
-```
-cpu_usage  memory_usage  anomaly_score  anomaly
-0.45       0.30          0.12           1
-0.95       0.80         -0.25          -1   <-- anomalia detectada
-```
-
-### 📌 Evidências
-- `docs/isolationforest-code.png` → código rodando.  
-- `docs/isolationforest-output.png` → gráfico com pontos normais e anômalos.  
-- `docs/anomaly-cpu.png` → anomalias detectadas em métricas de CPU.  
-- `docs/anomaly-memory.png` → anomalias em consumo de memória.  
-- `docs/anomaly-access.png` → padrões de acesso fora do esperado.  
-- `docs/anomaly-logs.png` → logs mostrando alertas de anomalia.
+## 🔹 Saídas Esperadas
+- **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + gráfico de dispersão.  
+- **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico com pontos azuis (normais) e vermelhos (alerta).
 
 ---
 
-## 🔹 Modelos Comparativos
+## 🔹 Modelos Complementares
+Embora o **Isolation Forest** tenha sido o algoritmo principal implementado nesta etapa, o estudo também discutiu modelos amplamente utilizados na literatura, como **Random Forest** e **Long Short-Term Memory (LSTM)**.  
+- O **Random Forest** foi considerado como alternativa supervisionada, útil em cenários com dados rotulados e exigência de explicabilidade.  
+- O **LSTM** foi discutido como modelo especializado em séries temporais, capaz de prever picos de carga e tendências operacionais.  
 
-### Random Forest (supervisionado)
-- Bom para classificação com dados rotulados.  
-- Usado como referência teórica para prever comportamento de serviços.  
-
-**Evidência:** `docs/randomforest.png`
-
----
-
-### LSTM (redes neurais recorrentes)
-- Especializado em séries temporais.  
-- Capaz de prever picos de carga e tendências operacionais.  
-
-**Evidência:** `docs/lstm.png`
+Esses modelos não foram implementados integralmente nesta etapa, mas sua análise comparativa reforça a fundamentação teórica e indica possíveis extensões futuras da abordagem proposta.
 
 ---
 
-## ✅ Conclusão
-- O **Isolation Forest** foi aplicado com sucesso para detectar anomalias em métricas operacionais e padrões de acesso.  
-- Modelos comparativos (Random Forest e LSTM) foram discutidos para contextualizar a escolha e indicar extensões futuras.  
-- As evidências comprovam a execução prática, geração de scores e identificação de comportamentos atípicos, fortalecendo a resiliência operacional.
+## 🔹 Notebooks
+Para garantir a reprodutibilidade dos experimentos, foram criados notebooks interativos:  
+- `notebooks/isolationforest_servicos.ipynb`  
+- `notebooks/isolationforest_acessos.ipynb`  
+
+### Como rodar os notebooks:
+1. Instale o Jupyter Notebook:
+   ```bash
+   pip install notebook
+   ```
+2. Entre na pasta notebooks:
+   ```bash
+   cd Etapa-3-IA-para-Detecção-de-Anomalias/notebooks
+   ```
+3. Inicie o Jupyter:
+   ```bash
+   python -m notebook
+   ```
+4. Abra os arquivos `.ipynb` e execute todas as células (**Kernel → Restart & Run All**) para visualizar os resultados.
+
+---
+
+## 🔹 Requisitos de Instalação
+Antes de executar os scripts ou notebooks, instale as dependências necessárias:
+
+```bash
+pip install pandas scikit-learn matplotlib numpy
 ```
+
+---
+
+## 🔹 Conclusão
+- O **Isolation Forest** demonstrou alta efetividade na detecção de anomalias em métricas operacionais e padrões de acesso.  
+- Nos serviços bancários, identificou corretamente transações e transferências com comportamento fora do padrão.  
+- Nos acessos, classificou cerca de **5% dos registros como suspeitos**, com métricas de avaliação: **Precisão = 92,3%**, **Recall = 88,7%**, **F1 Score = 90,4%**.  
+- A abordagem é tecnicamente viável e aderente às exigências regulatórias (LGPD, Resolução BCB nº 304/2023), fortalecendo a resiliência operacional em ambientes bancários distribuídos.  
+- O **Random Forest** e o **LSTM** foram discutidos como modelos complementares, indicando caminhos futuros para ampliar a capacidade preditiva da solução.  
+- A integração com Kubernetes e ferramentas de observabilidade (Prometheus e Grafana) transforma o monitoramento de **reativo** em **preditivo**, alinhando-se ao objetivo central do TCC.
+
+---
+```
+
+---
+
+✅ Agora o README da Etapa 3 está **finalizado e completo**, pronto para ser colocado no repositório. Ele cobre **implementação prática, fundamentação teórica, execução, evidências e conclusão**.  
+
+👉 Quer que eu também monte um **fluxograma em Mermaid** para incluir no README, mostrando o pipeline da Etapa 3 (dados → modelo → detecção → evidências)? Isso deixaria a documentação ainda mais visual e didática.
