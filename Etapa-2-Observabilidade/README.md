@@ -124,9 +124,10 @@ kubectl run -i --tty load-generator --image=busybox --restart=Never -n aiops-ban
 while true; do wget -q -O- http://aiops-service:8000/; done
 
 **Saída esperada:**
-
+```
 NAME         REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
 aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10m
+```
 
  ![hpa](docs/hpa.PNG)
 --- 
