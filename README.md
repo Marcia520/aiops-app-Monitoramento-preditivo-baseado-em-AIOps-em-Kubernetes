@@ -1,5 +1,7 @@
 ## Monitoramento preditivo baseado em AIOps em Kubernetes
 
+Projeto desenvolvido por **Marcia**, aplicando práticas de Engenharia de Software e DevOps para ambientes de monitoramento inteligente em Kubernetes.
+
 Este repositório reúne o desenvolvimento do **Trabalho de Conclusão de Curso (TCC)** do **MBA Engenharia de Software - USP/ESALQ** cujo objetivo geral é **propor, implementar e validar uma solução de monitoramento preditivo baseada em AIOps aplicada a ambientes Kubernetes no setor bancário**, com foco em:
 
 - Monitoramento preditivo
@@ -53,7 +55,9 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 - **GitOps** → versionamento declarativo da infraestrutura  
 - **TDD (Test-Driven Development)** → validação automatizada dos modelos  
 - **DDD (Domain-Driven Design)** → organização dos microsserviços por domínios funcionais  
-- **mTLS (mutual TLS)** → autenticação mútua e comunicação segura entre serviços  
+- **mTLS (mutual TLS)** → autenticação mútua e comunicação segura entre serviços
+- **GitHub** como fonte única da verdade (GitOps). 
+- **Ferramentas de CI/CD** para automação de deploys e testes.  
 
 ---
 
