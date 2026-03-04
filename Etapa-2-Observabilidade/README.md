@@ -127,9 +127,11 @@ while true; do wget -q -O- http://aiops-service:8000/; done
 ```
 NAME         REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
 aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10m
+
 ```
 
  ![hpa](docs/hpa.PNG)
+ 
 --- 
 #### 📌 Comandos, Saídas e Evidências
 
