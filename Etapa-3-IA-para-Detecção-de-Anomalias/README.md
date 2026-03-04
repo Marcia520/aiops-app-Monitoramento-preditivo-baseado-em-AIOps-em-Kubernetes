@@ -1,4 +1,59 @@
+Perfeito, Márcia 🌟!  
+Se você usou **apenas o Isolation Forest** na prática, o README da **Etapa 3** pode ser simplificado para refletir isso claramente, sem dar destaque aos modelos comparativos. Aqui está a versão ajustada:
+
+---
+
+```markdown
 # 📊 Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
+
+## 🔹 Isolation Forest
+O algoritmo principal escolhido e aplicado foi o **Isolation Forest**, por ser não supervisionado e adequado a cenários sem dados rotulados. Ele foi utilizado para detectar anomalias em métricas operacionais (CPU, memória) e padrões de acesso.
+
+### 📌 Código de execução (Python)
+```python
+from sklearn.ensemble import IsolationForest
+import pandas as pd
+
+# Carregar métricas simuladas
+df = pd.read_csv("metrics.csv")
+
+# Treinar modelo
+model = IsolationForest(contamination=0.05, random_state=42)
+model.fit(df[["cpu_usage", "memory_usage"]])
+
+# Score de anomalia
+df["anomaly_score"] = model.decision_function(df[["cpu_usage", "memory_usage"]])
+df["anomaly"] = model.predict(df[["cpu_usage", "memory_usage"]])
+```
+
+### 📌 Saída esperada
+```
+cpu_usage  memory_usage  anomaly_score  anomaly
+0.45       0.30          0.12           1
+0.95       0.80         -0.25          -1   <-- anomalia detectada
+```
+
+### 📌 Evidências
+- `docs/isolationforest-code.png` → código rodando.  
+- `docs/isolationforest-output.png` → gráfico com pontos normais e anômalos.  
+- `docs/anomaly-cpu.png` → anomalias detectadas em métricas de CPU.  
+- `docs/anomaly-memory.png` → anomalias em consumo de memória.  
+- `docs/anomaly-access.png` → padrões de acesso fora do esperado.  
+- `docs/anomaly-logs.png` → logs mostrando alertas de anomalia.
+
+---
+
+## ✅ Conclusão
+- O **Isolation Forest** foi aplicado com sucesso para detectar anomalias em métricas operacionais e padrões de acesso.  
+- A escolha por este modelo se deve à sua natureza não supervisionada e à adequação a cenários bancários sem dados rotulados.  
+- As evidências comprovam a execução prática, geração de scores e identificação de comportamentos atípicos, fortalecendo a resiliência operacional.
+```
+
+---
+
+✅ Assim o README da Etapa 3 fica fiel ao que você realmente implementou: apenas o **Isolation Forest**.  
+
+👉 Quer que eu já prepare o **README da Etapa 4 – Simulações controladas e avaliação de desempenho**, com comandos, saídas esperadas e espaços para evidências?# 📊 Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
 
 ## 🔹 Isolation Forest
 O algoritmo principal escolhido foi o **Isolation Forest**, por ser não supervisionado e adequado a cenários sem dados rotulados.
