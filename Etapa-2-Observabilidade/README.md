@@ -171,9 +171,8 @@ aiops_anomaly_score
 ```
 aiops_anomaly_score{instance="aiops-app:8000",job="aiops-monitor"} 0.15
 ```
-**Evidência:** `docs/prometheus.png`
 
- ![Metric Server](docs/metricas.PNG)
+ ![aiops_anomaly](docs/access_anomaly.PNG)
 
 ---
 
