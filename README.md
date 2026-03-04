@@ -1,6 +1,6 @@
 ## Monitoramento preditivo baseado em AIOps em Kubernetes
 
-Este repositório reúne o desenvolvimento do **Trabalho de Conclusão de Curso (TCC)** cujo objetivo geral é **propor, implementar e validar uma solução de monitoramento preditivo baseada em AIOps aplicada a ambientes Kubernetes no setor bancário**, com foco em:
+Este repositório reúne o desenvolvimento do **Trabalho de Conclusão de Curso (TCC)** do **MBA Engenharia de Software - USP/ESALQ** cujo objetivo geral é **propor, implementar e validar uma solução de monitoramento preditivo baseada em AIOps aplicada a ambientes Kubernetes no setor bancário**, com foco em:
 
 - Monitoramento preditivo
 - Observabilidade completa
