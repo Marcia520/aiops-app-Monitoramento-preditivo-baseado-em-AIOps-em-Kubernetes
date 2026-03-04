@@ -24,8 +24,7 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 | Transações           | 82.3%      | 467MB          | 345           | Anômalo  | -0.67          |
 | Transferência Fundos | 76.8%      | 423MB          | 289           | Anômalo  | -0.54          |
 
-**Evidências:**
-- `docs/servicos-anomalias.png` → gráfico com pontos normais e anômalos.
+ ![Anomalia Serviços](docs/anomalia-servicos.png)
 
 ---
 
@@ -44,8 +43,7 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 | Geolocalização Atípica  | 53         | 21.2%      | País diferente do cadastro       |
 | Padrão de Bot           | 45         | 18.0%      | Comportamento automatizado       |
 
-**Evidências:**
-- `docs/acessos-fraudulentos.png` → gráfico com acessos normais e suspeitos.
+ ![Acessos Fraudulentos](docs/acessos-fraudulentos.png)
 
 ---
 
