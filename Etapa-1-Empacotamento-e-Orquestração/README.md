@@ -1,7 +1,7 @@
-# Etapa 1 – Empacotamento e Orquestração
+## Etapa 1 – Empacotamento e Orquestração
 Este documento reúne as evidências coletadas durante a **Etapa 1** do protótipo, que consistiu em empacotar a aplicação `aiops-app` em containers e orquestrá-la em ambiente Kubernetes (Docker Desktop).
 
-## 🔧 Preparação do Ambiente
+### 🔧 Preparação do Ambiente
 
 Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenvolvimento e orquestração. As principais instalações e configurações realizadas foram:
 
@@ -28,7 +28,7 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 
 ---
 
-## 🔧 Evidências
+#### 🔧 Evidências
 
 - **Docker Desktop em execução:**  
  ![docker](docs/docker.PNG)
@@ -53,7 +53,7 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 
 ---
 
-## 1. Pods em execução
+#### 1. Pods em execução
 - **Comando utilizado:**
   ```bash
   kubectl get pods -n aiops-banco
@@ -65,7 +65,7 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 
 ---
 
-## 2. Métricas coletadas
+#### 2. Métricas coletadas
 - **Comando utilizado:**
   ```bash
   kubectl top pods -n aiops-banco
@@ -77,7 +77,7 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 
 ---
 
-## 3. HPA monitorando a aplicação
+#### 3. HPA monitorando a aplicação
 - **Comando utilizado:**
   ```bash
   kubectl get hpa -n aiops-banco --watch
@@ -89,14 +89,14 @@ Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenv
 
 ---
 
-## 4. Escalada automática
+#### 4. Escalada automática
 - **Descrição:**  
   Durante a execução de carga simulada (via BusyBox), o HPA detectou aumento de CPU e escalou a aplicação, criando novos pods automaticamente.
 ![escala_automatica](docs/escala_automatica.PNG)
 
 ---
 
-## ✅ Conclusão da Etapa 1
+### ✅ Conclusão
 
 Nesta etapa, a aplicação foi empacotada em contêineres Docker e orquestrada em Kubernetes, com escalabilidade automática via HPA.  
 O ambiente foi validado com métricas de CPU/memória, probes de saúde e simulações de falhas.  
