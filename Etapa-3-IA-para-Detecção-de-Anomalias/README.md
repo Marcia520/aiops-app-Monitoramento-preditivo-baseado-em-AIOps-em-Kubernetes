@@ -24,7 +24,7 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 | Transações           | 82.3%      | 467MB          | 345           | Anômalo  | -0.67          |
 | Transferência Fundos | 76.8%      | 423MB          | 289           | Anômalo  | -0.54          |
 
- ![Anomalia Serviços](docs/anomalia-servicos.png)
+ ![Anomalia Serviços](docs/anomalias-servicos.png)
 
 ---
 
