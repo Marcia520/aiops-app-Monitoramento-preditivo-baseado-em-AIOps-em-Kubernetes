@@ -1,19 +1,7 @@
-<<<<<<< HEAD
 ## 📊 Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
 
 ### 🔹 Introdução
-Esta etapa concentra-se na aplicação de **Inteligência Artificial orientada a Operações (AIOps)** para o monitoramento preditivo de ambientes bancários distribuídos em Kubernetes.  
-=======
-
-
----
-
-```markdown
-# 📊 Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
-
-## 🔹 Introdução
 Nesta etapa aplicamos **Inteligência Artificial orientada a Operações (AIOps)** para o monitoramento preditivo de ambientes bancários distribuídos em Kubernetes.  
->>>>>>> eea545b (Atualização das Etapas 3 e 4: notebooks e scripts revisados)
 O objetivo é detectar comportamentos atípicos em métricas operacionais e padrões de acesso, antecipando falhas, reduzindo o tempo de resposta a incidentes e fortalecendo a resiliência operacional.  
 O algoritmo principal utilizado foi o **Isolation Forest**, complementado por discussões comparativas com **Random Forest** e **LSTM**, conforme fundamentação teórica do TCC.
 
@@ -36,7 +24,6 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 | Transações           | 82.3%      | 467MB          | 345           | Anômalo  |
 | Transferência Fundos | 76.8%      | 423MB          | 289           | Anômalo  |
 
-<<<<<<< HEAD
  ![Anomalia Serviços](docs/anomalias-servicos.png)
 =======
 **Evidências:**
@@ -60,7 +47,6 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 | Geolocalização Atípica  | 53         | 21.2%      | País diferente do cadastro       |
 | Padrão de Bot           | 45         | 18.0%      | Comportamento automatizado       |
 
-<<<<<<< HEAD
  ![Acessos Fraudulentos](docs/acessos-fraudulentos.png)
 =======
 **Evidências:**
@@ -85,7 +71,6 @@ python isolationforest_acessos.py
 
 ---
 
-<<<<<<< HEAD
 ### 🔹 Saídas Esperadas
 - **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + gráfico de dispersão.  
 - **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico com pontos azuis (normais) e vermelhos (alerta).
@@ -102,7 +87,6 @@ Esses arquivos podem ser consultados como **evidências visuais** e estão versi
 - **Scikit-learn** → biblioteca de aprendizado de máquina utilizada para implementar o algoritmo Isolation Forest.  
 - **Pandas / NumPy** → manipulação e análise de dados.  
 - **Matplotlib** → geração de gráficos e visualizações.  
->>>>>>> eea545b (Atualização das Etapas 3 e 4: notebooks e scripts revisados)
 
 ---
 
