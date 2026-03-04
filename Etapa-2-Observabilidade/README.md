@@ -64,14 +64,13 @@ kubectl get deployment aiops-app -n aiops-banco
 ```
 
 **Saída esperada:**
-- Pods `aiops-app-xxxxx` em estado **Running**.  
+- Pods `aiops-app` em estado **Running**.  
 - Deployment `aiops-app` criado e disponível.
   
  ![Deployment](docs/deployment.PNG)
  ![deployment-disponivel](docs/deployment-disponivel.PNG)
  ![deployment-running](docs/deployment-running.PNG)
  
-
 ---
 
 ### 🔹 Service da aplicação
@@ -89,12 +88,11 @@ kubectl get svc -n aiops-banco | findstr aiops-service
 kubectl port-forward svc/aiops-service 8000:8000 -n aiops-banco
 curl http://localhost:8000/metrics | head -n 10
 ```
-
 **Saída esperada:**
 - Service `aiops-service` criado.  
 - Endpoint `/metrics` acessível.
 
- ![aiops-serviceo](docs/aiops-service.PNG)
+ ![aiops-service](docs/aiops-service.PNG)
  ![Services](docs/services.PNG)
  ![Métricas de nós](docs/aiops-service-criado.PNG)
 
@@ -160,7 +158,6 @@ curl http://localhost:8000/metrics
 # TYPE aiops_anomaly_score gauge
 aiops_anomaly_score 0.15
 ```
-
  ![Metricas](docs/metrics-endpoint.PNG)
 
 ---
@@ -201,7 +198,7 @@ aiops_anomaly_score
  ![grafana-memoria](docs/grafana-memoria.PNG)
 
   **Painel de score de anomalia**
- ![grafana-anomalia acesso](docs/grafana-anomalia acesso.PNG)
+ ![grafana-anomalia acesso](docs/grafana-anomalia-acesso.PNG)
 
   **Painel de réplicas do HPA**
  ![hpa-grafana](docs/hpa-grafana.PNG)
