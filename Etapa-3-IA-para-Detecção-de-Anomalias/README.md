@@ -45,8 +45,6 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 
  ![Acessos Fraudulentos](docs/acessos-fraudulentos.png)
 =======
-**Evidências:**
-- O gráfico é salvo automaticamente em `docs/acessos-fraudulentos.png`.
 
 ---
 
