@@ -28,7 +28,6 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 =======
 **Evidências:**
 - O gráfico é salvo automaticamente em `docs/servicos-anomalias.png`.
->>>>>>> eea545b (Atualização das Etapas 3 e 4: notebooks e scripts revisados)
 
 ---
 
@@ -51,7 +50,6 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 =======
 **Evidências:**
 - O gráfico é salvo automaticamente em `docs/acessos-fraudulentos.png`.
->>>>>>> eea545b (Atualização das Etapas 3 e 4: notebooks e scripts revisados)
 
 ---
 
@@ -141,10 +139,3 @@ pip install pandas scikit-learn matplotlib numpy
 - Os gráficos salvos em `docs/` comprovam visualmente os resultados obtidos, servindo como evidências práticas da implementação.  
 
 ---
-```
-<<<<<<< HEAD
-=======
-
----
-
->>>>>>> eea545b (Atualização das Etapas 3 e 4: notebooks e scripts revisados)
