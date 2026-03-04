@@ -26,7 +26,7 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 
  ![Anomalia Serviços](docs/anomalias-servicos.png)
 =======
-**Evidências:**
+![Prometheus](docs/prometheus-operator.PNG)
 - O gráfico é salvo automaticamente em `docs/servicos-anomalias.png`.
 
 ---
