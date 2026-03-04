@@ -9,7 +9,7 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 
 ### 🔹 Experimentos Realizados
 
-### 1. Detecção de Anomalias em Serviços Bancários
+#### 1. Detecção de Anomalias em Serviços Bancários
 - **Contexto:** análise de métricas operacionais (CPU, memória, latência) de serviços críticos como autenticação, boletos e transações.  
 - **Objetivo:** identificar serviços com consumo anômalo de recursos.  
 - **Script:** `scripts/isolationforest_servicos.py`  
@@ -29,7 +29,7 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 
 ---
 
-### 2. Detecção de Acessos Fraudulentos
+#### 2. Detecção de Acessos Fraudulentos
 - **Contexto:** simulação de 5.000 registros de acessos com atributos como país, cidade, dispositivo, quantidade de acessos e horário.  
 - **Objetivo:** identificar acessos suspeitos (bots, horários incomuns, geolocalização atípica).  
 - **Script:** `scripts/isolationforest_acessos.py`  
@@ -49,15 +49,15 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 
 ---
 
-## 🔹 Código de Execução
+### 🔹 Código de Execução
 
-### Serviços Bancários
+#### Serviços Bancários
 ```bash
 cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
 python isolationforest_servicos.py
 ```
 
-### Acessos Fraudulentos
+#### Acessos Fraudulentos
 ```bash
 cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
 python isolationforest_acessos.py
@@ -65,13 +65,13 @@ python isolationforest_acessos.py
 
 ---
 
-## 🔹 Saídas Esperadas
+### 🔹 Saídas Esperadas
 - **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + gráfico de dispersão.  
 - **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico com pontos azuis (normais) e vermelhos (alerta).
 
 ---
 
-## 🔹 Modelos Complementares
+### 🔹 Modelos Complementares
 Embora o **Isolation Forest** tenha sido o algoritmo principal implementado nesta etapa, o estudo também discutiu modelos amplamente utilizados na literatura, como **Random Forest** e **Long Short-Term Memory (LSTM)**.  
 - O **Random Forest** foi considerado como alternativa supervisionada, útil em cenários com dados rotulados e exigência de explicabilidade.  
 - O **LSTM** foi discutido como modelo especializado em séries temporais, capaz de prever picos de carga e tendências operacionais.  
@@ -80,12 +80,12 @@ Esses modelos não foram implementados integralmente nesta etapa, mas sua análi
 
 ---
 
-## 🔹 Notebooks
+### 🔹 Notebooks
 Para garantir a reprodutibilidade dos experimentos, foram criados notebooks interativos:  
 - `notebooks/isolationforest_servicos.ipynb`  
 - `notebooks/isolationforest_acessos.ipynb`  
 
-### Como rodar os notebooks:
+#### Como rodar os notebooks:
 1. Instale o Jupyter Notebook:
    ```bash
    pip install notebook
@@ -102,7 +102,7 @@ Para garantir a reprodutibilidade dos experimentos, foram criados notebooks inte
 
 ---
 
-## 🔹 Requisitos de Instalação
+### 🔹 Requisitos de Instalação
 Antes de executar os scripts ou notebooks, instale as dependências necessárias:
 
 ```bash
@@ -111,7 +111,7 @@ pip install pandas scikit-learn matplotlib numpy
 
 ---
 
-## 🔹 Conclusão
+### 🔹 Conclusão
 - O **Isolation Forest** demonstrou alta efetividade na detecção de anomalias em métricas operacionais e padrões de acesso.  
 - Nos serviços bancários, identificou corretamente transações e transferências com comportamento fora do padrão.  
 - Nos acessos, classificou cerca de **5% dos registros como suspeitos**, com métricas de avaliação: **Precisão = 92,3%**, **Recall = 88,7%**, **F1 Score = 90,4%**.  
