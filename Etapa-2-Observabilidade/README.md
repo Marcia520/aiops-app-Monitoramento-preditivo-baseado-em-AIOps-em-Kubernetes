@@ -41,7 +41,7 @@ kubectl top pods -n aiops-banco
 - APIService  com status **True**.  
 - Listagem de nós e pods com consumo de CPU e memória.
 
- ![Metric Server](docs/metric-server.PNG)
+ ![Metric Server](docs/metric-server-running.PNG)
  ![APIService ativo](docs/APIServices.PNG)
  ![Métricas de nós](docs/metricas-nos.PNG)
  ![Métricas de pods](docs/metricas-pods.PNG)
