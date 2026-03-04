@@ -1,7 +1,7 @@
 
-# 📊 Etapa 2 – Observabilidade com Prometheus e Grafana
+## 📊 Etapa 2 – Observabilidade com Prometheus e Grafana
 
-## ⚙️ Instalações e Configurações
+### ⚙️ Instalações e Configurações
 
 Durante esta etapa, foram realizadas as seguintes instalações e configurações:
 
@@ -16,12 +16,12 @@ Durante esta etapa, foram realizadas as seguintes instalações e configuraçõe
  ![Prometheus](docs/prometheus-operator2.PNG)
 
 
-### 🔹 Metrics-server
+#### 🔹 Metrics-server
 Arquivo: `metrics-server-deployment.yaml`
 
 kubectl apply -f metrics-server-deployment.yaml -n aiops-banco
 
-# Verificar se o pod do metrics-server está rodando
+##### Verificar se o pod do metrics-server está rodando
 kubectl get pods -n kube-system | findstr metrics-server
 
 # Verificar se o APIService está disponível
