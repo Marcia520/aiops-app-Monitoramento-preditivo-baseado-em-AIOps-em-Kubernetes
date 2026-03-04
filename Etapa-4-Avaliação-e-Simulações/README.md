@@ -6,18 +6,6 @@ O foco foi avaliar o desempenho do **Isolation Forest** em cenários simulados, 
 O objetivo é antecipar falhas operacionais, reduzir o tempo médio de resposta a incidentes (MTTR) e fortalecer a resiliência de serviços críticos, em conformidade com requisitos regulatórios como a Resolução BCB nº 304/2023 e a LGPD.
 
 ---
-
-#### 🔹 Arquitetura
-
-    Kubernetes + Docker: orquestração e escalabilidade automática via Horizontal Pod Autoscaler (HPA).
-
-    Prometheus: coleta de métricas operacionais e personalizadas (aiops_anomaly_score).
-
-    Grafana: visualização em tempo real e alertas configuráveis.
-
-    Isolation Forest: algoritmo principal para detecção de anomalias em métricas operacionais e padrões de acesso.
-
-    GitOps, mTLS, TDD, DDD: práticas modernas de Engenharia de Software para segurança, rastreabilidade e confiabilidade.
     
 #### 🔹 Experimentos Realizados
 
