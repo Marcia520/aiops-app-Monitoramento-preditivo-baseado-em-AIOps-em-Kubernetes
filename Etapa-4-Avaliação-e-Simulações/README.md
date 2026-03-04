@@ -1,4 +1,4 @@
-### 📊 Etapa 4 – Detecção de Anomalias, Avaliação do Modelo e Simulações Controladas
+### Etapa 4 – Detecção de Anomalias, Avaliação do Modelo e Simulações Controladas
 
 #### 🔹 Introdução
 Nesta etapa validamos os algoritmos de IA aplicados ao monitoramento preditivo em ambientes bancários distribuídos.  
