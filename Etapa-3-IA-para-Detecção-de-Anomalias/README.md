@@ -44,7 +44,6 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 | Padrão de Bot           | 45         | 18.0%      | Comportamento automatizado       |
 
  ![Acessos Fraudulentos](docs/acessos-fraudulentos.png)
-=======
 
 ---
 
@@ -67,12 +66,10 @@ python isolationforest_acessos.py
 ### 🔹 Saídas Esperadas
 - **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + gráfico de dispersão.  
 - **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico com pontos azuis (normais) e vermelhos (alerta).
-=======
+
 ## 🔹 Saídas Esperadas
 - **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + gráfico salvo em `docs/servicos-anomalias.png`.  
 - **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico salvo em `docs/acessos-fraudulentos.png`.  
-
-Esses arquivos podem ser consultados como **evidências visuais** e estão versionados no repositório.
 
 ---
 
