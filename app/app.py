@@ -24,12 +24,12 @@ def home():
 def metrics():
     # Simulação de novo dado CPU/memória
     novo_cpu = np.random.rand(1, 2)
-    score_cpu = modelo_cpu.decision_function(novo_cpu)
+    score_cpu = modelo_cpu.decision_function(novo_cpu)[0]  # pega apenas o valor numérico
     cpu_anomaly_score.set(score_cpu)
 
     # Simulação de novo dado de acesso
     novo_acesso = np.random.rand(1, 2)
-    score_acesso = modelo_acesso.decision_function(novo_acesso)
+    score_acesso = modelo_acesso.decision_function(novo_acesso)[0]  # pega apenas o valor numérico
     access_anomaly_score.set(score_acesso)
 
     # Retornar métricas no formato correto
