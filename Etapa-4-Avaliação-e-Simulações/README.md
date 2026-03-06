@@ -11,12 +11,12 @@ Nesta etapa foram validados os algoritmos aplicados na Etapa 3, com foco em resu
 
 #### 🔹 Resultados Obtidos
 
-##### 1.Isolation Forest
+#### 1.Isolation Forest
 
 - Detectou **outliers** em métricas operacionais (CPU, memória) e padrões de acesso (horário, frequência, geolocalização, bots).  
 - Permitiu identificar comportamentos atípicos em serviços bancários críticos.
 
-##### 1.1. Detecção de Anomalias em Serviços Bancários
+#### 1.1. Detecção de Anomalias em Serviços Bancários
 
 | Serviço                 | Uso de CPU | Uso de Memória | Latência (ms) | Status   | Score Anomalia |
 |--------------------------|------------|----------------|---------------|----------|----------------|
@@ -29,7 +29,7 @@ Nesta etapa foram validados os algoritmos aplicados na Etapa 3, com foco em resu
 **Explicação:**  
 O modelo identificou corretamente serviços com comportamento anômalo, antecipando falhas antes da indisponibilidade.
 
-##### 1.2. Detecção de Acessos Fraudulentos
+#### 1.2. Detecção de Acessos Fraudulentos
 
 | cliente_id | hora | qtd_acessos | cliente | bot | alerta_fraude |
 |------------|------|-------------|---------|-----|---------------|
@@ -42,7 +42,7 @@ O modelo identificou corretamente serviços com comportamento anômalo, antecipa
 **Explicação:**  
 Foram identificados **250 registros (5%) como suspeitos**, incluindo bots e acessos em horários incomuns.
 
-##### 2. Avaliação de Performance
+#### 2. Avaliação de Performance
 
 | Algoritmo        | Precisão | Recall | F1-Score | Tempo de Inferência (ms) | AUC-ROC |
 |------------------|----------|--------|----------|---------------------------|---------|
@@ -54,7 +54,7 @@ Foram identificados **250 registros (5%) como suspeitos**, incluindo bots e aces
 **Explicação:**  
 O *Isolation Forest* apresentou melhor equilíbrio entre precisão e eficiência computacional, sendo mais adequado para aplicações em tempo quase real.
 
-##### 3. Escalabilidade e Resiliência
+#### 3. Escalabilidade e Resiliência
 
 | Métrica              | 2 Réplicas | 3 Réplicas | 5 Réplicas | Melhoria   |
 |----------------------|------------|------------|------------|------------|
@@ -66,7 +66,7 @@ O *Isolation Forest* apresentou melhor equilíbrio entre precisão e eficiência
 **Explicação:**  
 Os testes confirmaram que a escalabilidade horizontal aumentou a vazão de requisições e reduziu a latência, mantendo alta taxa de sucesso.
 
-##### 4. Avaliação do Modelo
+#### 4. Avaliação do Modelo
 - Métricas utilizadas:
   - **Precisão (Precision):** proporção de anomalias corretamente identificadas.
   - **Recall (Sensibilidade):** capacidade de encontrar todas as anomalias.
@@ -79,12 +79,12 @@ Os testes confirmaram que a escalabilidade horizontal aumentou a vazão de requi
 - F1 Score: **90,4%**
 - Tempo médio de resposta: **< 1s por lote de dados**
 
-##### 5. Simulações Controladas
+#### 5. Simulações Controladas
 - **Sobrecarga de serviços:** aumento abrupto de requisições para simular pico de uso.  
 - **Interrupção de pods:** desligamento forçado de contêineres para verificar recuperação automática.  
 - **Degradação progressiva de desempenho:** aumento gradual da latência e consumo de memória.
 
-##### 6. Monitoramento em Tempo Real
+#### 6. Monitoramento em Tempo Real
 - O sistema expôs métricas personalizadas (`aiops_anomaly_score`) via endpoint `/metrics`.  
 - O **Prometheus** coletou essas métricas e o **Grafana** exibiu dashboards em tempo real.  
 - Alertas visuais foram configurados para destacar serviços ou acessos classificados como anômalos.
@@ -107,14 +107,14 @@ Os testes confirmaram que a escalabilidade horizontal aumentou a vazão de requi
 
 #### 🔹 Código de Execução
 
-##### Scripts locais
+#### Scripts locais
 ```bash
 cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
 python isolationforest_servicos.py
 python isolationforest_acessos.py
 ```
 
-##### Integração com Prometheus/Grafana
+#### Integração com Prometheus/Grafana
 1. Configure o Prometheus para coletar métricas do endpoint `/metrics` exposto pela aplicação.  
 2. Crie um **ServiceMonitor** com o label `app: aiops`.  
 3. No Grafana, configure dashboards para visualizar:
