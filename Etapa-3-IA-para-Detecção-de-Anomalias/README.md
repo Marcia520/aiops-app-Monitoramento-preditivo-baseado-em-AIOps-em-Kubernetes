@@ -1,7 +1,5 @@
 ### Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
 
----
-
 #### 🔹 Introdução
 
 Nesta etapa aplicamos **Inteligência Artificial orientada a Operações (AIOps)** para o monitoramento preditivo de ambientes bancários distribuídos em Kubernetes.  
