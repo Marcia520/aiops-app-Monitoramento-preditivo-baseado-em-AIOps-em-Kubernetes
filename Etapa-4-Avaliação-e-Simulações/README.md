@@ -16,7 +16,7 @@ Nesta etapa foram validados os algoritmos aplicados na Etapa 3, com foco em resu
 - Detectou **outliers** em métricas operacionais (CPU, memória) e padrões de acesso (horário, frequência, geolocalização, bots).  
 - Permitiu identificar comportamentos atípicos em serviços bancários críticos.
 
-###### 1.1. Detecção de Anomalias em Serviços Bancários
+##### 1.1. Detecção de Anomalias em Serviços Bancários
 
 | Serviço                 | Uso de CPU | Uso de Memória | Latência (ms) | Status   | Score Anomalia |
 |--------------------------|------------|----------------|---------------|----------|----------------|
@@ -29,7 +29,7 @@ Nesta etapa foram validados os algoritmos aplicados na Etapa 3, com foco em resu
 **Explicação:**  
 O modelo identificou corretamente serviços com comportamento anômalo, antecipando falhas antes da indisponibilidade.
 
-###### 1.2. Detecção de Acessos Fraudulentos
+##### 1.2. Detecção de Acessos Fraudulentos
 
 | cliente_id | hora | qtd_acessos | cliente | bot | alerta_fraude |
 |------------|------|-------------|---------|-----|---------------|
@@ -66,7 +66,7 @@ O *Isolation Forest* apresentou melhor equilíbrio entre precisão e eficiência
 **Explicação:**  
 Os testes confirmaram que a escalabilidade horizontal aumentou a vazão de requisições e reduziu a latência, mantendo alta taxa de sucesso.
 
-###### 4. Avaliação do Modelo
+##### 4. Avaliação do Modelo
 - Métricas utilizadas:
   - **Precisão (Precision):** proporção de anomalias corretamente identificadas.
   - **Recall (Sensibilidade):** capacidade de encontrar todas as anomalias.
