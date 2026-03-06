@@ -51,7 +51,7 @@ Esses modelos não foram implementados integralmente nesta etapa, mas sua análi
 
 #### 🔹 Experimentos Realizados
 
-###### 1. Detecção de Anomalias em Serviços Bancários
+#### 1. Detecção de Anomalias em Serviços Bancários
 - **Contexto:** análise de métricas operacionais (CPU, memória, latência) de serviços críticos como autenticação, boletos e transações.  
 - **Objetivo:** identificar serviços com consumo anômalo de recursos.  
 - **Script:** `scripts/isolationforest_servicos.py`  
@@ -70,7 +70,7 @@ Esses modelos não foram implementados integralmente nesta etapa, mas sua análi
 
 ---
 
-###### 2. Detecção de Acessos Fraudulentos
+#### 2. Detecção de Acessos Fraudulentos
 
 - **Contexto:** simulação de 5.000 registros de acessos com atributos como país, cidade, dispositivo, quantidade de acessos e horário.  
 - **Objetivo:** identificar acessos suspeitos (bots, horários incomuns, geolocalização atípica).  
@@ -92,13 +92,13 @@ Esses modelos não foram implementados integralmente nesta etapa, mas sua análi
 
 #### 🔹 Código de Execução
 
-##### Serviços Bancários
+#### Serviços Bancários
 ```bash
 cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
 python isolationforest_servicos.py
 ```
 
-##### Acessos Fraudulentos
+#### Acessos Fraudulentos
 ```bash
 cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
 python isolationforest_acessos.py
@@ -117,7 +117,7 @@ Para garantir a reprodutibilidade dos experimentos, foram criados notebooks inte
 - `notebooks/isolationforest_servicos.ipynb`  
 - `notebooks/isolationforest_acessos.ipynb`  
 
-##### Como rodar os notebooks:
+#### Como rodar os notebooks:
 1. Instale o Jupyter Notebook:
    ```bash
    pip install notebook
