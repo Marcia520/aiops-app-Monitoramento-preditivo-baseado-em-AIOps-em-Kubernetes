@@ -1,15 +1,57 @@
 ### Etapa 3 – Aplicação de Algoritmos de IA para Detecção de Anomalias
 
+---
+
 #### 🔹 Introdução
+
 Nesta etapa aplicamos **Inteligência Artificial orientada a Operações (AIOps)** para o monitoramento preditivo de ambientes bancários distribuídos em Kubernetes.  
 O objetivo é detectar comportamentos atípicos em métricas operacionais e padrões de acesso, antecipando falhas, reduzindo o tempo de resposta a incidentes e fortalecendo a resiliência operacional.  
 O algoritmo principal utilizado foi o **Isolation Forest**, complementado por discussões comparativas com **Random Forest** e **LSTM**, conforme fundamentação teórica do TCC.
 
 ---
 
+#### 🔹 Fonte de Dados
+
+Para validar os modelos, foram utilizados **dados sintéticos**, garantindo conformidade com a **LGPD** e reprodutibilidade científica.
+
+- **Conjunto Operacional:** métricas de serviços críticos (autenticação, emissão de boletos, processamento de pagamentos, transações e transferências).  
+  - Variáveis: uso de CPU, memória e latência.  
+  - Processamento: normalização via *StandardScaler*.  
+
+- **Conjunto de Acessos:** 5.000 registros simulados.  
+  - Atributos: identificador do cliente, país de origem, tipo de dispositivo, quantidade de acessos e horário.  
+  - Objetivo: detectar acessos fraudulentos (bots, horários incomuns, alta frequência, geolocalização divergente).  
+
+---
+
+#### 🔹 Algoritmos Aplicados
+
+- **Isolation Forest (principal):** não supervisionado, eficaz em cenários sem dados rotulados.
+  Embora o **Isolation Forest** tenha sido o algoritmo principal implementado nesta etapa, o estudo também discutiu modelos amplamente utilizados na literatura, como **Random Forest** e **Long Short-Term Memory (LSTM)**.   
+- O **Random Forest** foi considerado como alternativa supervisionada, útil em cenários com dados rotulados e exigência de explicabilidade.  
+- O **LSTM** foi discutido como modelo especializado em séries temporais, capaz de prever picos de carga e tendências operacionais.  
+Esses modelos não foram implementados integralmente nesta etapa, mas sua análise comparativa reforça a fundamentação teórica e indica possíveis extensões futuras da abordagem proposta.  
+
+---
+
+#### 🔹 Implementação
+- Scripts em Python (Flask, Scikit-learn, TensorFlow/Keras).  
+- Métrica personalizada `aiops_anomaly_score` exposta via endpoint `/metrics`.  
+- Integração com **Prometheus** e **Grafana** para coleta e visualização em tempo real.  
+- Dashboards configurados para destacar serviços e acessos classificados como anômalos.  
+
+---
+
+#### 🔹 Bibliotecas Utilizadas
+- **Scikit-learn** → biblioteca de aprendizado de máquina utilizada para implementar o algoritmo Isolation Forest.  
+- **Pandas / NumPy** → manipulação e análise de dados.  
+- **Matplotlib** → geração de gráficos e visualizações.  
+
+---
+
 #### 🔹 Experimentos Realizados
 
-##### 1. Detecção de Anomalias em Serviços Bancários
+###### 1. Detecção de Anomalias em Serviços Bancários
 - **Contexto:** análise de métricas operacionais (CPU, memória, latência) de serviços críticos como autenticação, boletos e transações.  
 - **Objetivo:** identificar serviços com consumo anômalo de recursos.  
 - **Script:** `scripts/isolationforest_servicos.py`  
@@ -28,7 +70,8 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 
 ---
 
-##### 2. Detecção de Acessos Fraudulentos
+###### 2. Detecção de Acessos Fraudulentos
+
 - **Contexto:** simulação de 5.000 registros de acessos com atributos como país, cidade, dispositivo, quantidade de acessos e horário.  
 - **Objetivo:** identificar acessos suspeitos (bots, horários incomuns, geolocalização atípica).  
 - **Script:** `scripts/isolationforest_acessos.py`  
@@ -69,22 +112,6 @@ python isolationforest_acessos.py
   
 ---
 
-#### 🔹 Bibliotecas Utilizadas
-- **Scikit-learn** → biblioteca de aprendizado de máquina utilizada para implementar o algoritmo Isolation Forest.  
-- **Pandas / NumPy** → manipulação e análise de dados.  
-- **Matplotlib** → geração de gráficos e visualizações.  
-
----
-
-#### 🔹 Modelos Complementares
-Embora o **Isolation Forest** tenha sido o algoritmo principal implementado nesta etapa, o estudo também discutiu modelos amplamente utilizados na literatura, como **Random Forest** e **Long Short-Term Memory (LSTM)**.  
-- O **Random Forest** foi considerado como alternativa supervisionada, útil em cenários com dados rotulados e exigência de explicabilidade.  
-- O **LSTM** foi discutido como modelo especializado em séries temporais, capaz de prever picos de carga e tendências operacionais.  
-
-Esses modelos não foram implementados integralmente nesta etapa, mas sua análise comparativa reforça a fundamentação teórica e indica possíveis extensões futuras da abordagem proposta.
-
----
-
 #### 🔹 Notebooks
 Para garantir a reprodutibilidade dos experimentos, foram criados notebooks interativos:  
 - `notebooks/isolationforest_servicos.ipynb`  
@@ -116,12 +143,13 @@ pip install pandas scikit-learn matplotlib numpy
 ```
 
 ---
-
 #### 🔹 Conclusão
-- O **Isolation Forest** demonstrou alta efetividade na detecção de anomalias em métricas operacionais e padrões de acesso.  
-- Nos serviços bancários, identificou corretamente transações e transferências com comportamento fora do padrão.  
-- Nos acessos, classificou cerca de **5% dos registros como suspeitos**, com métricas de avaliação: **Precisão = 92,3%**, **Recall = 88,7%**, **F1 Score = 90,4%**.  
-- A abordagem é tecnicamente viável e aderente às exigências regulatórias (LGPD, Resolução BCB nº 304/2023), fortalecendo a resiliência operacional em ambientes bancários distribuídos.  
-- O **Random Forest** e o **LSTM** foram discutidos como modelos complementares, indicando caminhos futuros para ampliar a capacidade preditiva da solução.  
-- A integração com Kubernetes e ferramentas de observabilidade (Prometheus e Grafana) será detalhada na **Etapa 4**, transformando o monitoramento de **reativo** em **preditivo**.  
-- Os gráficos salvos em `docs/` comprovam visualmente os resultados obtidos, servindo como evidências práticas da implementação.  
+- A etapa consolidou a **metodologia**: definição dos dados, escolha dos algoritmos e integração com a arquitetura cloud native.  
+- O *Isolation Forest* foi selecionado como modelo principal por equilibrar desempenho e eficiência computacional.  
+- Essa base metodológica sustentou os testes práticos e resultados apresentados na Etapa 4.  
+
+---
+
+
+
+
