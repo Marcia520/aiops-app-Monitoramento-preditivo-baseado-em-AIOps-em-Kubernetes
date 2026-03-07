@@ -91,4 +91,7 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 Este projeto foi desenvolvido como parte de um **Trabalho de Conclusão de Curso**, evidenciando a aplicação prática de conceitos de **AIOps, DevOps e Observabilidade** em ambientes críticos do setor bancário.  
 A proposta busca contribuir para a evolução da confiabilidade operacional e para a redução de riscos em serviços financeiros essenciais, demonstrando a relevância da integração entre **inteligência artificial e operações de TI**.
 
+- [Siga para a Etapa 1 – Empacotamento e Orquestração](./Etapa-1-Empacotamento-e-Orquestração/README.md)
+
+
 
