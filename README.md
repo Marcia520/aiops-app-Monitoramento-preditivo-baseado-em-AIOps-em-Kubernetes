@@ -90,3 +90,63 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 #### 📌 Contexto acadêmico
 Este projeto foi desenvolvido como parte de um **Trabalho de Conclusão de Curso**, evidenciando a aplicação prática de conceitos de **AIOps, DevOps e Observabilidade** em ambientes críticos do setor bancário.  
 A proposta busca contribuir para a evolução da confiabilidade operacional e para a redução de riscos em serviços financeiros essenciais, demonstrando a relevância da integração entre **inteligência artificial e operações de TI**.
+
+# 🔐 Monitoramento Preditivo baseado em AIOps em Kubernetes
+### Autora: Márcia Aparecida Rodrigues de Sousa
+
+Este repositório contém implementações práticas do meu TCC:  
+**“Monitoramento preditivo com inteligência artificial em ambientes Kubernetes: uma abordagem aplicada ao setor bancário”**.  
+
+O projeto integra **Kubernetes, Prometheus, Grafana e algoritmos de IA** (Isolation Forest, Random Forest, LSTM) para detecção de anomalias e automação de respostas operacionais.
+
+---
+
+## ▶️ Executar os Notebooks no Google Colab
+
+Clique nos botões abaixo para abrir e executar diretamente no Colab:
+
+### Etapa 1 – Configuração do Ambiente Kubernetes
+*(manifests, HPA, probes, simulações de falhas)*  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Marcia520/aiops-app-Monitoramento-preditivo-baseado-em-AIOps-em-Kubernetes/blob/main/Etapa-1-Kubernetes/ambiente_kubernetes.ipynb)
+
+---
+
+### Etapa 2 – Observabilidade com Prometheus e Grafana
+*(coleta de métricas, dashboards, análise em tempo real)*  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Marcia520/aiops-app-Monitoramento-preditivo-baseado-em-AIOps-em-Kubernetes/blob/main/Etapa-2-Observabilidade/prometheus_grafana.ipynb)
+
+---
+
+### Etapa 3 – IA para Detecção de Anomalias
+
+#### Isolation Forest – Acessos
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Marcia520/aiops-app-Monitoramento-preditivo-baseado-em-AIOps-em-Kubernetes/blob/main/Etapa-3-IA-para-Detecção-de-Anomalias/notebooks/isolationforest_acessos.ipynb)
+
+#### Isolation Forest – Serviços
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Marcia520/aiops-app-Monitoramento-preditivo-baseado-em-AIOps-em-Kubernetes/blob/main/Etapa-3-IA-para-Detecção-de-Anomalias/notebooks/isolationforest_servicos.ipynb)
+
+#### Random Forest – Comparativo
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Marcia520/aiops-app-Monitoramento-preditivo-baseado-em-AIOps-em-Kubernetes/blob/main/Etapa-3-IA-para-Detecção-de-Anomalias/notebooks/randomforest_servicos.ipynb)
+
+#### LSTM – Séries Temporais
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Marcia520/aiops-app-Monitoramento-preditivo-baseado-em-AIOps-em-Kubernetes/blob/main/Etapa-3-IA-para-Detecção-de-Anomalias/notebooks/lstm_servicos.ipynb)
+
+---
+
+## 📊 Estrutura do Projeto
+
+- **datasets/** → scripts de geração de dados sintéticos (acessos e métricas operacionais)  
+- **dashboards/** → arquivos JSON dos dashboards do Grafana  
+- **Etapa-1-Kubernetes/** → manifests e notebook de configuração do ambiente  
+- **Etapa-2-Observabilidade/** → configuração Prometheus/Grafana  
+- **Etapa-3-IA-para-Detecção-de-Anomalias/** → notebooks de IA (Isolation Forest, Random Forest, LSTM)  
+
+---
+
+## 🚀 Como Executar Localmente
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/Marcia520/aiops-app-Monitoramento-preditivo-baseado-em-AIOps-em-Kubernetes.git
+   cd aiops-app-Monitoramento-preditivo-baseado-em-AIOps-em-Kubernetes
+
