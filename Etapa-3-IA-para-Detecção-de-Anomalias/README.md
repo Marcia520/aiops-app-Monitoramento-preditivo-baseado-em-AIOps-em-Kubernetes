@@ -20,7 +20,7 @@ Para validar os modelos, foram utilizados **dados sintéticos**, garantindo conf
 
 ---
 
-## 🔹 Algoritmos Aplicados
+### 🔹 Algoritmos Aplicados
 - **Isolation Forest (principal):** não supervisionado, eficaz em cenários sem dados rotulados.  
 - **Random Forest (comparativo):** supervisionado, robusto contra ruído, útil para classificação histórica.  
 - **LSTM (comparativo):** rede neural recorrente para séries temporais, capaz de prever picos de uso, mas com maior custo computacional.  
