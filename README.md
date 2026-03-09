@@ -66,7 +66,6 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 - `README.md`
 
 #### Etapa-1-Empacotamento-Orquestracao/
-- **k8s/** → manifests iniciais (deployment, service, HPA, metrics-server)
 - **docs/** → prints da instalação e configuração (Docker, Kubernetes, Git, GitHub)
 - `README.md` → explicação da etapa
 
@@ -78,6 +77,8 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 #### Etapa-3-Anomalias-Automacao/
 - **k8s/** → YAMLs de alertas e detecção de anomalias (`alertmanager-config.yaml`, `anomaly-detector.yaml`)
 - **docs/** → prints dos dashboards de anomalias
+- **Notebooks** → Isolation forest
+- **scripts** → Código do algoritmo
 - `README.md` → explicação da etapa
 
 #### Etapa-4-Resultados-Conclusoes/
