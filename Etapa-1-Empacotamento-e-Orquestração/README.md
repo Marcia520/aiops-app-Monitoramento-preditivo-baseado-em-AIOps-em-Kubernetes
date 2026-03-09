@@ -1,6 +1,8 @@
 ## Etapa 1 – Empacotamento e Orquestração
 Este documento reúne as evidências coletadas durante a **Etapa 1** do protótipo, que consistiu em empacotar a aplicação `aiops-app` em containers e orquestrá-la em ambiente Kubernetes (Docker Desktop).
 
+---
+
 ### 🔧 Preparação do Ambiente
 
 Antes de iniciar a Etapa 1, foi necessário configurar todo o ambiente de desenvolvimento e orquestração. As principais instalações e configurações realizadas foram:
