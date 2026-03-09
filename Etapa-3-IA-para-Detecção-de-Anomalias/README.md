@@ -161,5 +161,3 @@ pip install pandas scikit-learn matplotlib numpy
 - O **Random Forest** e o **LSTM** foram discutidos como modelos complementares, indicando caminhos futuros para ampliar a capacidade preditiva da solução.  
 - A integração com Kubernetes e ferramentas de observabilidade (Prometheus e Grafana) será detalhada na **Etapa 4**, transformando o monitoramento de **reativo** em **preditivo**.  
 - Os gráficos salvos em `docs/` comprovam visualmente os resultados obtidos, servindo como evidências práticas da implementação.  
-
----
