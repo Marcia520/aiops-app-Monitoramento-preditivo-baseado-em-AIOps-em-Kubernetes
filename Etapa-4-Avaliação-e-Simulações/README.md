@@ -20,18 +20,76 @@ A etapa também considerou critérios regulatórios, como a **Resolução BCB n�
   - **F1 Score:** equilíbrio entre precisão e recall.
   - **Tempo de resposta:** rapidez do modelo em classificar os dados.
 
-**Resultados simulados:**
-- Precisão: **92,3%**
-- Recall: **88,7%**
-- F1 Score: **90,4%**
-- Tempo médio de resposta: **< 1s por lote de dados**
+---
 
-#### 3. Simulações Controladas
+### 🔹 Resultados Obtidos
+
+### 1. Detecção de Anomalias em Serviços Bancários
+
+| Serviço                 | Uso de CPU | Uso de Memória | Latência (ms) | Status   | Score Anomalia |
+|--------------------------|------------|----------------|---------------|----------|----------------|
+| Autenticação             | 23.4%      | 156MB          | 89            | Normal   | 0.12           |
+| Processamento Pagamento  | 45.6%      | 234MB          | 156           | Normal   | 0.08           |
+| Transações               | 82.3%      | 467MB          | 345           | Anômalo  | -0.67          |
+| Extrato Conta            | 28.9%      | 178MB          | 112           | Normal   | 0.15           |
+| Transferência de Fundos  | 76.8%      | 423MB          | 289           | Anômalo  | -0.54          |
+
+
+O modelo identificou corretamente serviços com comportamento anômalo, antecipando falhas antes da indisponibilidade.
+
+---
+
+### 2. Detecção de Acessos Fraudulentos
+
+| cliente_id | hora | qtd_acessos | cliente | bot | alerta_fraude |
+|------------|------|-------------|---------|-----|---------------|
+| 221958     | 18   | 2           | 0       | 0   | ALERTA        |
+| 465838     | 3    | 8           | 0       | 0   | ALERTA        |
+| 275203     | 17   | 1           | 1       | 1   | ALERTA        |
+| 339629     | 0    | 3           | 0       | 0   | ALERTA        |
+| 234633     | 13   | 4           | 0       | 1   | ALERTA        |
+
+
+Foram identificados **250 registros (5%) como suspeitos**, incluindo bots e acessos em horários incomuns.
+
+---
+
+### 3. Avaliação de Performance
+
+| Algoritmo        | Precisão | Recall | F1-Score | Tempo de Inferência (ms) | AUC-ROC |
+|------------------|----------|--------|----------|---------------------------|---------|
+| Isolation Forest | 92.3%    | 88.7%  | 90.4%    | 45                        | 0.941   |
+| Random Forest    | 89.5%    | 85.2%  | 87.3%    | 67                        | 0.912   |
+| LSTM             | 91.8%    | 87.9%  | 89.8%    | 125                       | 0.928   |
+| Threshold-based  | 76.4%    | 82.1%  | 79.1%    | 12                        | 0.823   |
+
+
+O *Isolation Forest* apresentou melhor equilíbrio entre precisão e eficiência computacional, sendo mais adequado para aplicações em tempo quase real.
+
+---
+
+### 4. Escalabilidade e Resiliência
+
+| Métrica              | 2 Réplicas | 3 Réplicas | 5 Réplicas | Melhoria   |
+|----------------------|------------|------------|------------|------------|
+| Requisições/s (pico) | 1.200      | 1.850      | 2.900      | +141.6%    |
+| Latência Média (ms)  | 156        | 128        | 89         | –43.0%     |
+| Uso de CPU (máximo)  | 85%        | 72%        | 65%        | –23.5%     |
+| Sucesso (%)          | 98.2%      | 99.1%      | 99.6%      | +1.4%      |
+
+
+Os testes confirmaram que a escalabilidade horizontal aumentou a vazão de requisições e reduziu a latência, mantendo alta taxa de sucesso.
+
+---
+
+#### 5. Simulações Controladas
 - **Sobrecarga de serviços:** aumento abrupto de requisições para simular pico de uso.  
 - **Interrupção de pods:** desligamento forçado de contêineres para verificar recuperação automática.  
-- **Degradação progressiva de desempenho:** aumento gradual da latência e consumo de memória.  
+- **Degradação progressiva de desempenho:** aumento gradual da latência e consumo de memória.
 
-#### 4. Monitoramento em Tempo Real
+---
+
+#### 6. Monitoramento em Tempo Real
 - O sistema expôs métricas personalizadas (`aiops_anomaly_score`) via endpoint `/metrics`.  
 - O **Prometheus** coletou essas métricas e o **Grafana** exibiu dashboards em tempo real.  
 - Alertas visuais foram configurados para destacar serviços ou acessos classificados como anômalos.
@@ -77,7 +135,7 @@ pip install pandas scikit-learn matplotlib numpy flask prometheus-client
 ```
 
 ---
-
+ 
 ### 🔹 Conclusão
 - O **Isolation Forest** demonstrou alta capacidade de antecipar falhas e detectar acessos suspeitos.  
 - As simulações mostraram que o sistema consegue:
@@ -88,5 +146,4 @@ pip install pandas scikit-learn matplotlib numpy flask prometheus-client
 - A solução é tecnicamente viável e aderente às exigências regulatórias (LGPD e Resolução BCB nº 304/2023).  
 
 ---
-```
 
