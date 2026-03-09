@@ -1,4 +1,4 @@
-## 📊 Etapa 4 – Detecção de Anomalias, Avaliação do Modelo e Simulações Controladas
+## Etapa 4 – Detecção de Anomalias, Avaliação do Modelo e Simulações Controladas
 
 ### 🔹 Introdução
 Nesta etapa validamos os algoritmos de IA aplicados ao monitoramento preditivo em ambientes bancários distribuídos.  
@@ -144,6 +144,3 @@ pip install pandas scikit-learn matplotlib numpy flask prometheus-client
   - **Fortalecer a resiliência operacional** em ambientes bancários distribuídos.  
 - A integração com Prometheus e Grafana transformou o monitoramento de **reativo** em **preditivo**, alinhando-se ao objetivo central do TCC.  
 - A solução é tecnicamente viável e aderente às exigências regulatórias (LGPD e Resolução BCB nº 304/2023).  
-
----
-
