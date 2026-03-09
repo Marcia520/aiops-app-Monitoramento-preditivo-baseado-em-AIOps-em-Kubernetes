@@ -7,6 +7,72 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 
 ---
 
+## 🔹 Fonte de Dados
+Para validar os modelos, foram utilizados **dados sintéticos**, garantindo conformidade com a **LGPD** e reprodutibilidade científica.
+
+- **Conjunto Operacional:** métricas de serviços críticos (autenticação, emissão de boletos, processamento de pagamentos, transações e transferências).  
+  - Variáveis: uso de CPU, memória e latência.  
+  - Processamento: normalização via *StandardScaler*.  
+
+- **Conjunto de Acessos:** 5.000 registros simulados.  
+  - Atributos: identificador do cliente, país de origem, tipo de dispositivo, quantidade de acessos e horário.  
+  - Objetivo: detectar acessos fraudulentos (bots, horários incomuns, alta frequência, geolocalização divergente).  
+
+---
+
+## 🔹 Algoritmos Aplicados
+- **Isolation Forest (principal):** não supervisionado, eficaz em cenários sem dados rotulados.  
+- **Random Forest (comparativo):** supervisionado, robusto contra ruído, útil para classificação histórica.  
+- **LSTM (comparativo):** rede neural recorrente para séries temporais, capaz de prever picos de uso, mas com maior custo computacional.  
+
+---
+
+### 🔹 Modelos Complementares
+Embora o **Isolation Forest** tenha sido o algoritmo principal implementado nesta etapa, o estudo também discutiu modelos amplamente utilizados na literatura, como **Random Forest** e **Long Short-Term Memory (LSTM)**.  
+- O **Random Forest** foi considerado como alternativa supervisionada, útil em cenários com dados rotulados e exigência de explicabilidade.  
+- O **LSTM** foi discutido como modelo especializado em séries temporais, capaz de prever picos de carga e tendências operacionais.  
+
+Esses modelos não foram implementados integralmente nesta etapa, mas sua análise comparativa reforça a fundamentação teórica e indica possíveis extensões futuras da abordagem proposta.
+
+---
+
+### 🔹 Bibliotecas Utilizadas
+- **Scikit-learn** → biblioteca de aprendizado de máquina utilizada para implementar o algoritmo Isolation Forest.  
+- **Pandas / NumPy** → manipulação e análise de dados.  
+- **Matplotlib** → geração de gráficos e visualizações.  
+
+---
+
+### 🔹 Implementação
+- Scripts em Python (Flask, Scikit-learn, TensorFlow/Keras).  
+- Métrica personalizada `aiops_anomaly_score` exposta via endpoint `/metrics`.  
+- Integração com **Prometheus** e **Grafana** para coleta e visualização em tempo real.  
+- Dashboards configurados para destacar serviços e acessos classificados como anômalos.  
+
+---
+
+### 🔹 Código de Execução
+
+#### Serviços Bancários
+```bash
+cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
+python isolationforest_servicos.py
+```
+
+#### Acessos Fraudulentos
+```bash
+cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
+python isolationforest_acessos.py
+```
+
+---
+
+### 🔹 Saídas Esperadas
+- **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + tabela com métricas e status (Normal/Anômalo) + gráfico salvo em `docs/servicos-anomalias.png`.  
+- **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico com pontos azuis (normais) e vermelhos (alerta) salvo em `docs/acessos-fraudulentos.png`.  
+
+---
+
 ### 🔹 Experimentos Realizados
 
 #### 1. Detecção de Anomalias em Serviços Bancários
@@ -44,44 +110,6 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 | Padrão de Bot           | 45         | 18.0%      | Comportamento automatizado       |
 
  ![Acessos Fraudulentos](docs/acessos-fraudulentos.png)
-
----
-
-### 🔹 Código de Execução
-
-#### Serviços Bancários
-```bash
-cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
-python isolationforest_servicos.py
-```
-
-#### Acessos Fraudulentos
-```bash
-cd Etapa-3-IA-para-Detecção-de-Anomalias/scripts
-python isolationforest_acessos.py
-```
-
----
-
-### 🔹 Saídas Esperadas
-- **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + tabela com métricas e status (Normal/Anômalo) + gráfico salvo em `docs/servicos-anomalias.png`.  
-- **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico com pontos azuis (normais) e vermelhos (alerta) salvo em `docs/acessos-fraudulentos.png`.  
-
----
-
-## 🔹 Bibliotecas Utilizadas
-- **Scikit-learn** → biblioteca de aprendizado de máquina utilizada para implementar o algoritmo Isolation Forest.  
-- **Pandas / NumPy** → manipulação e análise de dados.  
-- **Matplotlib** → geração de gráficos e visualizações.  
-
----
-
-### 🔹 Modelos Complementares
-Embora o **Isolation Forest** tenha sido o algoritmo principal implementado nesta etapa, o estudo também discutiu modelos amplamente utilizados na literatura, como **Random Forest** e **Long Short-Term Memory (LSTM)**.  
-- O **Random Forest** foi considerado como alternativa supervisionada, útil em cenários com dados rotulados e exigência de explicabilidade.  
-- O **LSTM** foi discutido como modelo especializado em séries temporais, capaz de prever picos de carga e tendências operacionais.  
-
-Esses modelos não foram implementados integralmente nesta etapa, mas sua análise comparativa reforça a fundamentação teórica e indica possíveis extensões futuras da abordagem proposta.
 
 ---
 
