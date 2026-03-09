@@ -1,6 +1,8 @@
 
 ## Etapa 2 – Observabilidade com Prometheus e Grafana
 
+---
+
 ### ⚙️ Instalações e Configurações
 
 Durante esta etapa, foram realizadas as seguintes instalações e configurações:
@@ -15,6 +17,7 @@ Durante esta etapa, foram realizadas as seguintes instalações e configuraçõe
  ![Prometheus](docs/prometheus-operator.PNG)
  ![Prometheus](docs/prometheus-operator2.PNG)
 
+---
 
 ### 🔹 Metrics-server
 Arquivo: `metrics-server-deployment.yaml`
@@ -31,7 +34,7 @@ kubectl get apiservice | findstr metrics.k8s.io
 kubectl top nodes
 kubectl top pods -n aiops-banco
 
-### 📌 Saídas esperadas
+**Saída esperada:**
 - Pod `metrics-server` em estado **Running**.  
 - APIService  com status **True**.  
 - Listagem de nós e pods com consumo de CPU e memória.
@@ -134,6 +137,7 @@ aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10
  ![hpa](docs/hpa.PNG)
  
 --- 
+
 ### 📌 Comandos, Saídas e Evidências
 
 #### 1. Exposição de métricas pela aplicação
@@ -204,6 +208,7 @@ aiops-hpa    Deployment/aiops-app    75%/80%   2         4         3          10
  ![hpa](docs/hpa.PNG)
  
 ---
+
 ### 🌐 Acesso ao Prometheus e Grafana
 
 #### 🔎 Prometheus
@@ -236,3 +241,4 @@ As evidências acima comprovam que:
 - Grafana consolidou em dashboards visuais.  
 - O HPA reagiu às métricas conforme esperado.  
 
+---
