@@ -74,14 +74,13 @@ Demonstrar como técnicas de **Machine Learning** (em especial o algoritmo **Iso
 - **docs/** → prints de métricas, dashboards, HPA
 - `README.md` → explicação da etapa
 
-#### Etapa-3-Anomalias-Automacao/
-- **k8s/** → YAMLs de alertas e detecção de anomalias (`alertmanager-config.yaml`, `anomaly-detector.yaml`)
+#### Etapa-3-IA-para-Detecção-de-Anomalias/
 - **docs/** → prints dos dashboards de anomalias
 - **Notebooks** → Isolation forest
 - **scripts** → Código do algoritmo
 - `README.md` → explicação da etapa
 
-#### Etapa-4-Resultados-Conclusoes/
+#### Etapa-4-Avaliação-e-Simulações/
 - **docs/** → prints finais, gráficos comparativos, conclusões
 - `README.md` → resumo dos resultados e análise de resiliência 
 
