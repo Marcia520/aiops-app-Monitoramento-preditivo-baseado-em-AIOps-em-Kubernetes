@@ -82,14 +82,14 @@ Os testes confirmaram que a escalabilidade horizontal aumentou a vazão de requi
 
 ---
 
-#### 5. Simulações Controladas
+### 5. Simulações Controladas
 - **Sobrecarga de serviços:** aumento abrupto de requisições para simular pico de uso.  
 - **Interrupção de pods:** desligamento forçado de contêineres para verificar recuperação automática.  
 - **Degradação progressiva de desempenho:** aumento gradual da latência e consumo de memória.
 
 ---
 
-#### 6. Monitoramento em Tempo Real
+### 6. Monitoramento em Tempo Real
 - O sistema expôs métricas personalizadas (`aiops_anomaly_score`) via endpoint `/metrics`.  
 - O **Prometheus** coletou essas métricas e o **Grafana** exibiu dashboards em tempo real.  
 - Alertas visuais foram configurados para destacar serviços ou acessos classificados como anômalos.
