@@ -92,7 +92,15 @@ Esses modelos não foram implementados integralmente nesta etapa, mas sua análi
 ### 🔹 Notebooks
 Para garantir a reprodutibilidade dos experimentos, foram criados notebooks interativos:  
 - `notebooks/isolationforest_servicos.ipynb`  
-- `notebooks/isolationforest_acessos.ipynb`  
+- `notebooks/isolationforest_acessos.ipynb`
+
+### 🚀 Executar no Google Colab
+
+Clique nos links abaixo para abrir os notebooks diretamente no Colab:
+
+- [Detecção de Acessos Fraudulentos](https://colab.research.google.com/github/Marcia520/aiops-app-Monitoramento-preditivo-baseado-em-AIOps-em-Kubernetes/blob/main/Etapa-3-IA-para-Detecção-de-Anomalias/notebooks/isolationforest_acessos.ipynb)
+- [Detecção de Anomalias em Serviços Bancários](https://colab.research.google.com/github/Marcia520/aiops-app-Monitoramento-preditivo-baseado-em-AIOps-em-Kubernetes/blob/main/Etapa-3-IA-para-Detecção-de-Anomalias/notebooks/isolationforest_servicos.ipynb)
+
 
 #### Como rodar os notebooks:
 1. Instale o Jupyter Notebook:
