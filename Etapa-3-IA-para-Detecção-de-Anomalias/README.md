@@ -64,12 +64,8 @@ python isolationforest_acessos.py
 ---
 
 ### 🔹 Saídas Esperadas
-- **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + gráfico de dispersão.  
-- **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico com pontos azuis (normais) e vermelhos (alerta).
-
-## 🔹 Saídas Esperadas
-- **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + gráfico salvo em `docs/servicos-anomalias.png`.  
-- **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico salvo em `docs/acessos-fraudulentos.png`.  
+- **Serviços Bancários:** tabela com métricas e status (Normal/Anômalo) + tabela com métricas e status (Normal/Anômalo) + gráfico salvo em `docs/servicos-anomalias.png`.  
+- **Acessos Fraudulentos:** contagem de acessos normais e suspeitos + gráfico com pontos azuis (normais) e vermelhos (alerta) salvo em `docs/acessos-fraudulentos.png`.  
 
 ---
 
