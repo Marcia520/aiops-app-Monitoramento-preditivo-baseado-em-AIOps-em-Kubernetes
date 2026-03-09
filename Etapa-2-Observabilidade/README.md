@@ -1,7 +1,6 @@
 
 ## Etapa 2 – Observabilidade com Prometheus e Grafana
 
----
 
 ### ⚙️ Instalações e Configurações
 
