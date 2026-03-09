@@ -7,7 +7,7 @@ O algoritmo principal utilizado foi o **Isolation Forest**, complementado por di
 
 ---
 
-## 🔹 Fonte de Dados
+### 🔹 Fonte de Dados
 Para validar os modelos, foram utilizados **dados sintéticos**, garantindo conformidade com a **LGPD** e reprodutibilidade científica.
 
 - **Conjunto Operacional:** métricas de serviços críticos (autenticação, emissão de boletos, processamento de pagamentos, transações e transferências).  
